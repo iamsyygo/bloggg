@@ -1,0 +1,37 @@
+{
+  "name": "bloggg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@iconify-json/logos": "^1.1.43",
+    "@iconify-json/meteocons": "^1.1.5",
+    "@types/node": "^20.14.12",
+    "@unocss/preset-icons": "^0.61.6",
+    "fast-glob": "^3.3.2",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-parse": "^11.0.0",
+    "sass": "^1.77.8",
+    "unocss": "^0.61.6",
+    "vitepress": "^1.3.1"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.11.0",
+    "aos": "3.0.0-beta.6",
+    "dayjs": "^1.11.12",
+    "shiki-magic-move": "^0.4.3",
+    "vitepress-plugin-magic-move": "^1.1.2",
+    "vue": "^3.4.34"
+  }
+}
