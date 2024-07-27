@@ -34,12 +34,11 @@ const { frontmatter } = useData();
 .VPHome {
   margin-bottom: 96px;
   margin: 0 auto;
-  width: 40vw;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .VPHome {
-    margin-bottom: 128px;
+    width: 43vw;
   }
 }
 </style>

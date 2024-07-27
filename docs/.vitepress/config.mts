@@ -39,15 +39,22 @@ const config = defineConfig({
     //   {
     //     text: 'Examples',
     //     items: [
-    //       { text: 'Markdown Examples', link: '/markdown-examples' },
-    //       { text: 'Runtime API Examples', link: '/api-examples' },
+    //       { text: 'Markdown Examples', link: '' },
+    //       { text: 'Runtime API Examples', link: '' },
     //     ],
     //   },
     // ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/iamsyygo' }],
+    returnToTopLabel: '飞回顶部～',
+    outline: {
+      label: '导航指南',
+    },
   },
   vite: {
     plugins: [unocss()],
+    server: {
+      host: true,
+    },
     resolve: {
       alias: [
         {

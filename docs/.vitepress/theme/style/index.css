@@ -1,4 +1,4 @@
-@import './reset-user.css';
+@import './reset-user.scss';
 /**
  * Customize default theme styling by overriding CSS variables:
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
@@ -42,7 +42,7 @@
  * - `danger`: Used to show error, or dangerous message to the users. Used
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
-:root  {
+:root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);

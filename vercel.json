@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "framework": "vitepress",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "docs/.vitepress/dist"
+      }
+    }
+  ]
+}

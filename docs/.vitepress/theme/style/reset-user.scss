@@ -5,7 +5,7 @@
   scroll-behavior: smooth;
 
   --vp-font-family-mono: 'DM Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-  --vp-c-bg: rgba(255, 255, 255, 0.9);
+  /* --vp-c-bg: rgba(255, 255, 255, 0.9); */
 
   --vp-c-text-1: #000;
   --vp-c--body-text-1: #555;
@@ -14,11 +14,21 @@
 .dark {
   --vp-c-text-1: #fff;
   --vp-c--body-text-1: #bbb;
-  --vp-c-bg: rgba(0, 0, 0, 0.9);
+  /* --vp-c-bg: rgba(0, 0, 0, 0.9); */
 }
 
 body {
   color: var(--vp-c--body-text-1);
+}
+
+a,
+a:hover,
+a:visited,
+a:link,
+a:active,
+a:focus {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .vp-doc h1,
@@ -48,7 +58,7 @@ body {
   opacity: 0.05;
 }
 .is-home::after {
-  --cell-size: 3.5rem;
+  --cell-size: 2rem;
   --radial-color-purple-low: hsl(270, 100%, 90%);
   --radial-color-red-low: hsl(0, 100%, 90%);
   content: '';
@@ -70,10 +80,26 @@ body {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
+
+.VPLocalNavOutlineDropdown .items {
+  border: none;
+}
+.VPLocalNavOutlineDropdown .outline {
+  outline-style: none;
+}
+
+// header.VPNav {
+//   position: sticky !important;
+//   top: 0;
+// }
+// .VPLocalNav {
+//   position: sticky !important;
+//   top: 64px !important;
+// }
