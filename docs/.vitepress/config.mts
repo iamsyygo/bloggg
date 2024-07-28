@@ -26,7 +26,7 @@ const config = defineConfig({
     },
   },
   themeConfig: {
-    logo: '/logo.svg',
+    logo: 'logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '🏠', link: '/' },

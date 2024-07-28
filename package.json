@@ -34,6 +34,7 @@
     "dayjs": "^1.11.12",
     "shiki-magic-move": "^0.4.3",
     "vitepress-plugin-magic-move": "^1.1.2",
+    "vitepress-plugin-nprogress": "^0.0.4",
     "vue": "^3.4.34"
   }
 }

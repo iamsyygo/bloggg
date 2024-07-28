@@ -1,5 +1,5 @@
 ---
-aside: false
+aside: true
 ---
 
 <script setup>

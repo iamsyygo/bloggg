@@ -5,16 +5,19 @@
   scroll-behavior: smooth;
 
   --vp-font-family-mono: 'DM Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-  /* --vp-c-bg: rgba(255, 255, 255, 0.9); */
-
   --vp-c-text-1: #000;
   --vp-c--body-text-1: #555;
   --vp-c--title-text-weight: 800;
+  --vp-c-text-highlight-weight: 600;
 }
 .dark {
   --vp-c-text-1: #fff;
   --vp-c--body-text-1: #bbb;
-  /* --vp-c-bg: rgba(0, 0, 0, 0.9); */
+  --vp-c-bg: #000;
+}
+.vp-doc strong {
+  font-weight: var(--vp-c-text-highlight-weight, 600);
+  color: var(--vp-c-text-1);
 }
 
 body {
@@ -102,4 +105,8 @@ a:focus {
 // .VPLocalNav {
 //   position: sticky !important;
 //   top: 64px !important;
+// }
+
+// .VPContent {
+//   background-color: var(--vp-c-bg) !important;
 // }

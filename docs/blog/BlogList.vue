@@ -1,6 +1,6 @@
 <template>
   <div v-for="(articles, year) in articles" class="pos-relative classify" data-aos="fade-up" data-aos-duration="800">
-    <svg width="500" height="100" viewBox="0 0 500 100" class="clip-year">
+    <svg width="400" height="100" viewBox="0 0 500 100" class="clip-year">
       <!-- 定义裁剪路径 -->
       <defs>
         <clipPath id="clip-top">
@@ -79,7 +79,6 @@ import { articles } from './articles';
   margin: 0 auto;
   margin-top: 30px;
   width: 60%;
-  overflow: hidden;
   position: relative;
 }
 
@@ -150,7 +149,7 @@ import { articles } from './articles';
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(-60%, -33%);
+  transform: translate(120%, -30%);
   z-index: 1;
 }
 

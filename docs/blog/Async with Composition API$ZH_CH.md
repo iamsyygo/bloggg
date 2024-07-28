@@ -1,3 +1,7 @@
+---
+aside: true
+---
+
 # Vue Composition API 中的异步函数
 
 ::: tip

@@ -7,7 +7,7 @@ layout: home
 
 <p data-aos="fade-up" data-aos-duration="800">👋，我是 iamsyygo，一名热爱代码的前端开发者。</p>
     <div data-aos="fade-up" data-aos-duration="800">我的编程旅程始于对网页设计的热情，逐渐深入到
-    <div class="i-logos:javascript app-icon"></div>、<div class="i-logos:vue app-icon"></div>和
+    <div class="i-logos:javascript app-icon"></div>、<div class="i-logos:vue app-icon"></div> 和
     <div class="i-logos:nodejs-icon-alt app-icon"></div> 等前端技术的探索。
 </div>
 <p  data-aos="fade-up" data-aos-duration="800">我喜欢将创意转化为互动体验，通过编程去实现“美”，致力于打造用户友好的界面和高效的应用程序。</p>
