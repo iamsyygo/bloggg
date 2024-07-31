@@ -11,6 +11,9 @@ import './style/index.scss';
 import { Content } from './components/Content';
 import vitepressNprogress from 'vitepress-plugin-nprogress';
 import 'vitepress-plugin-nprogress/lib/css/index.css';
+import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
+import '@shikijs/vitepress-twoslash/style.css';
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
@@ -29,5 +32,6 @@ export default {
     const { app, router, siteData } = ctx;
     vitepressNprogress(ctx);
     app.component('Content', Content);
+    app.use(TwoslashFloatingVue);
   },
 } satisfies Theme;

@@ -38,7 +38,12 @@ const pageName = computed(() => route.path.replace(/[./]+/g, '_').replace(/_html
         <div class="content-container">
           <slot name="doc-before" />
           <main class="main">
-            <Content class="vp-doc" :class="[pageName, theme.externalLinkIcon && 'external-link-icon-enabled']" />
+            <Content
+              class="vp-doc"
+              :class="[pageName, theme.externalLinkIcon && 'external-link-icon-enabled']"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+            />
           </main>
           <VPDocFooter>
             <template #doc-footer-before><slot name="doc-footer-before" /></template>

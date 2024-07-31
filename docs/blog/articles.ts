@@ -4,7 +4,7 @@ export const articles = {
       "year": "2024",
       "title": "Async with Composition API",
       "createTime": "2024-07-27 15:08:09",
-      "updateTime": "2024-07-27 16:41:37",
+      "updateTime": "2024-07-31 20:41:40",
       "time": "2 分钟",
       "tags": [
         "vue",
@@ -42,6 +42,22 @@ export const articles = {
       ],
       "isTranslate": false,
       "path": "Shiki代码块平滑示例.html"
+    },
+    {
+      "year": "2024",
+      "title": "Watch with @vue_reactivity",
+      "createTime": "2024-07-31 21:58:24",
+      "updateTime": "2024-07-31 22:02:27",
+      "time": "2 分钟",
+      "tags": [
+        "vue",
+        "html",
+        "react",
+        "javascript",
+        "typescript"
+      ],
+      "isTranslate": true,
+      "path": "Watch with @vue_reactivity$ZH_CH.html"
     }
   ]
 };

@@ -2,6 +2,7 @@ import { defineConfig, UserConfig } from 'vitepress';
 import unocss from 'unocss/vite';
 import { withMagicMove } from 'vitepress-plugin-magic-move';
 import { fileURLToPath, URL } from 'node:url';
+import { transformerTwoslash } from '@shikijs/vitepress-twoslash';
 // https://vitepress.dev/reference/site-config
 
 const config = defineConfig({
@@ -24,9 +25,11 @@ const config = defineConfig({
       light: 'vitesse-light',
       dark: 'vitesse-dark',
     },
+    // @ts-expect-error
+    codeTransformers: [transformerTwoslash()],
   },
   themeConfig: {
-    logo: 'logo.svg',
+    logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '🏠', link: '/' },
@@ -46,13 +49,20 @@ const config = defineConfig({
     // ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/iamsyygo' }],
     returnToTopLabel: '飞回顶部～',
+    // lastUpdated: {
+    //   text: '最后更新',
+    // },
     outline: {
       label: '导航指南',
     },
+    // search: {
+    //   provider: 'local',
+    // },
   },
   vite: {
     plugins: [unocss()],
     server: {
+      port: 3080,
       host: true,
     },
     resolve: {

@@ -110,3 +110,11 @@ a:focus {
 // .VPContent {
 //   background-color: var(--vp-c-bg) !important;
 // }
+
+pre,
+code,
+kbd,
+samp {
+  --vp-font-weight-mono: 500;
+  font-weight: var(--vp-font-weight-mono);
+}
