@@ -33,6 +33,7 @@
     "@vueuse/core": "^10.11.0",
     "aos": "3.0.0-beta.6",
     "dayjs": "^1.11.12",
+    "echarts": "^5.5.1",
     "shiki-magic-move": "^0.4.3",
     "vitepress-plugin-magic-move": "^1.1.2",
     "vitepress-plugin-nprogress": "^0.0.4",

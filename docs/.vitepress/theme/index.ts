@@ -13,6 +13,7 @@ import vitepressNprogress from 'vitepress-plugin-nprogress';
 import 'vitepress-plugin-nprogress/lib/css/index.css';
 import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
 import '@shikijs/vitepress-twoslash/style.css';
+import '../utils/echarts';
 
 export default {
   extends: DefaultTheme,

@@ -74,10 +74,10 @@
         <span>📅</span>
         {{ article.createTime }}
       </div>
-      <div class="article__time">
+      <!-- <div class="article__time">
         <span>⏳</span>
         {{ article.time }}
-      </div>
+      </div> -->
     </a>
   </div>
 </template>
