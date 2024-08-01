@@ -42,7 +42,7 @@ const pageName = computed(() => route.path.replace(/[./]+/g, '_').replace(/_html
               class="vp-doc"
               :class="[pageName, theme.externalLinkIcon && 'external-link-icon-enabled']"
               data-aos="fade-up"
-              data-aos-duration="1500"
+              data-aos-duration="1000"
             />
           </main>
           <VPDocFooter>

@@ -3,7 +3,7 @@
     v-for="(articles, year, index) in articles"
     class="pos-relative classify"
     data-aos="fade-up"
-    data-aos-duration="1500"
+    data-aos-duration="1000"
   >
     <svg width="400" height="100" viewBox="0 0 500 100" class="clip-year">
       <!-- 定义裁剪路径 -->
@@ -20,7 +20,7 @@
       <text
         data-aos="fade-right"
         data-aos-offset="300"
-        data-aos-duration="1500"
+        data-aos-duration="1000"
         data-aos-delay="200"
         data-aos-easing="ease-in-sine"
         id="text-top"
@@ -43,7 +43,7 @@
         id="text-bottom"
         data-aos="fade-right"
         data-aos-offset="300"
-        data-aos-duration="1500"
+        data-aos-duration="1000"
         data-aos-delay="200"
         data-aos-easing="ease-in-sine"
         x="10"
@@ -64,7 +64,7 @@
       :href="article.path"
       :data-aos-delay="index * 200"
       data-aos="fade-up"
-      data-aos-duration="1500"
+      data-aos-duration="1000"
     >
       <div class="article__title">
         <span class="article__title--translate" v-if="article.isTranslate">翻译</span>
