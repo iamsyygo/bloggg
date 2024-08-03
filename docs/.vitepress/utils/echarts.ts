@@ -30,5 +30,7 @@ echarts.use([
 
 // export default echarts;
 
-// @ts-expect-error
-window.echarts = echarts;
+if (!import.meta.env.SSR) {
+  // @ts-expect-error
+  window.echarts = echarts;
+}

@@ -33,9 +33,13 @@ export const articles = {
       "year": "2024",
       "title": "Echarts 数据集",
       "createTime": "2024-08-01 21:20:09",
-      "updateTime": "2024-08-01 21:20:52",
+      "updateTime": "2024-08-02 22:54:01",
       "time": "1 分钟",
-      "tags": [],
+      "tags": [
+        "vue",
+        "html",
+        "javascript"
+      ],
       "isTranslate": false,
       "path": "Echarts 数据集.html"
     },
@@ -79,6 +83,16 @@ export const articles = {
       ],
       "isTranslate": false,
       "path": "块级格式化上下文.html"
+    },
+    {
+      "year": "2024",
+      "title": "用 pnpm 管理 monorepo",
+      "createTime": "2024-08-02 22:56:43",
+      "updateTime": "2024-08-02 22:57:25",
+      "time": "1 分钟",
+      "tags": [],
+      "isTranslate": false,
+      "path": "用 pnpm 管理 monorepo.html"
     }
   ]
 };
