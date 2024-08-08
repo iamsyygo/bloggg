@@ -118,3 +118,7 @@ samp {
   --vp-font-weight-mono: 400;
   font-weight: var(--vp-font-weight-mono);
 }
+
+.VPDoc .main img {
+  border-radius: 6px;
+}
