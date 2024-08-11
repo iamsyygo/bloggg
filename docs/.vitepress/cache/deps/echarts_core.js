@@ -1,4 +1,7 @@
 import {
+  installLabelLayout
+} from "./chunk-C7BJDVOJ.js";
+import {
   createDimensions,
   createSeriesData_default
 } from "./chunk-F4EHNPVL.js";
@@ -45,9 +48,6 @@ import {
   use,
   version
 } from "./chunk-SDT32735.js";
-import {
-  installLabelLayout
-} from "./chunk-C7BJDVOJ.js";
 import "./chunk-FN5U6BYJ.js";
 import {
   Arc_default,

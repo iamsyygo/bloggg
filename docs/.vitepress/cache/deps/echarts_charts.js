@@ -1,8 +1,4 @@
 import {
-  createSeriesData_default,
-  prepareSeriesDataSchema
-} from "./chunk-F4EHNPVL.js";
-import {
   LineDraw_default,
   Line_default as Line_default2,
   MapDraw_default,
@@ -32,6 +28,10 @@ import {
   updateViewOnZoom,
   warnDeprecated
 } from "./chunk-O4VUYSTC.js";
+import {
+  createSeriesData_default,
+  prepareSeriesDataSchema
+} from "./chunk-F4EHNPVL.js";
 import {
   Chart_default,
   CoordinateSystem_default,

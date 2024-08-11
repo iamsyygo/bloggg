@@ -1,10 +1,5 @@
 <template>
-  <div
-    v-for="(articles, year, index) in articles"
-    class="pos-relative classify"
-    data-aos="fade-up"
-    data-aos-duration="1000"
-  >
+  <div v-for="(articles, year, index) in articles" class="pos-relative classify">
     <svg width="400" height="100" viewBox="0 0 500 100" class="clip-year">
       <!-- 定义裁剪路径 -->
       <defs>
@@ -58,14 +53,7 @@
       </text>
     </svg>
 
-    <a
-      v-for="(article, index) in articles"
-      class="article"
-      :href="article.path"
-      :data-aos-delay="index * 200"
-      data-aos="fade-up"
-      data-aos-duration="1000"
-    >
+    <a v-for="(article, index) in articles" class="article" :href="article.path">
       <div class="article__title">
         <span class="article__title--translate" v-if="article.isTranslate">翻译</span>
         {{ article.title }}
