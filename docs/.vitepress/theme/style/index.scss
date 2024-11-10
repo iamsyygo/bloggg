@@ -1,4 +1,5 @@
-@import './reset-user.scss';
+@use './override.scss';
+@use './animate.scss';
 /**
  * Customize default theme styling by overriding CSS variables:
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css

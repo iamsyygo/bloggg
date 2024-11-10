@@ -13,11 +13,6 @@
 
       <!-- 虚线文本，使用裁剪路径显示上半部分 -->
       <text
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-duration="1000"
-        data-aos-delay="200"
-        data-aos-easing="ease-in-sine"
         id="text-top"
         x="10"
         y="60"
@@ -36,11 +31,6 @@
       <!-- 实线文本，使用裁剪路径显示下半部分 -->
       <text
         id="text-bottom"
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-duration="1000"
-        data-aos-delay="200"
-        data-aos-easing="ease-in-sine"
         x="10"
         y="60"
         font-size="20"
@@ -53,15 +43,15 @@
       </text>
     </svg>
 
-    <a v-for="(article, index) in articles" class="article" :href="article.path">
+    <a v-for="(article, index) in articles" class="article" :href="article.path" data-animate>
       <div class="article__title">
         <span class="article__title--translate" v-if="article.isTranslate">翻译</span>
         {{ article.title }}
       </div>
-      <div class="article__date">
+      <!-- <div class="article__date">
         <span>📅</span>
         {{ article.createTime }}
-      </div>
+      </div> -->
       <!-- <div class="article__time">
         <span>⏳</span>
         {{ article.time }}
@@ -81,13 +71,11 @@ import { articles } from './articles';
   width: 60%;
   position: relative;
 }
-
 @media (max-width: 768px) {
   .classify {
     width: 90%;
   }
 }
-
 .article {
   text-decoration: none;
   color: var(--vp-c--body-text-1);

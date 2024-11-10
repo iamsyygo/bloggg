@@ -5,7 +5,7 @@ import 'shiki-magic-move/style.css';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import DefaultThemeLayout from './Layout.vue';
-import 'aos/dist/aos.css';
+// import 'aos/dist/aos.css';
 import 'virtual:uno.css';
 import './style/index.scss';
 import { Content } from './components/Content';
@@ -18,12 +18,11 @@ import '../utils/echarts';
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    // @ts-expect-error
-    if (!import.meta.env.SSR) {
-      import('aos').then(({ default: aos }) => {
-        aos.init();
-      });
-    }
+    // if (!import.meta.env.SSR) {
+    //   import('aos').then(({ default: aos }) => {
+    //     aos.init();
+    //   });
+    // }
 
     return h(DefaultThemeLayout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots

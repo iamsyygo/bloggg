@@ -9,4 +9,4 @@ import BlogList from './BlogList.vue'
 
 # Docs
 
-<BlogList data-aos="fade-up" data-aos-duration="1000" />
+<BlogList />

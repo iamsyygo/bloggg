@@ -1,4 +1,4 @@
-import "./chunk-G3PMV62Z.js";
+import "./chunk-PZ5AY32C.js";
 
 // node_modules/.pnpm/vitepress-plugin-nprogress@0.0.4/node_modules/vitepress-plugin-nprogress/lib/vitepress-plugin-nprogress.js
 var x = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};

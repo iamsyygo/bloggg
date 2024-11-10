@@ -61,22 +61,58 @@ a:focus {
   background-image: linear-gradient(to right, var(--vp-c-text-1) 1px, transparent 1px),
     linear-gradient(to bottom, var(--vp-c-text-1) 1px, transparent 1px);
   background-position: right -1px;
-  background-size: 23px 23px;
-  mask-image: radial-gradient(circle at 100% 0%, white, transparent 65%);
-  opacity: 0.05;
+  background-size: 30px 30px;
+  // mask-image: radial-gradient(circle at 100% 0%, white, transparent 65%);
+  opacity: 0.03;
 }
 .is-home::after {
   --cell-size: 2rem;
-  --radial-color-purple-low: hsl(270, 100%, 90%);
-  --radial-color-red-low: hsl(0, 100%, 90%);
+  --radial-color-1: #f7df1f;
+  --radial-color-2: #41b883;
   content: '';
   position: absolute;
   inset: 0;
 
-  background: radial-gradient(var(--radial-color-purple-low), transparent 40%) no-repeat -170vw -55vh / 250vw 250vh,
-    radial-gradient(closest-side, var(--radial-color-red-low), transparent) no-repeat calc(100% + var(--cell-size) * 6)
-      calc(var(--cell-size) * -7) / calc(var(--cell-size) * 12) calc(var(--cell-size) * 19);
+  background: radial-gradient(var(--radial-color-1), transparent 40%) no-repeat -170vw -55vh / 250vw 250vh;
+  animation: fade-in-bg 10s infinite alternate;
 }
+
+@property --radial-color-1 {
+  syntax: '<color>'; /* 指定该属性的值类型，这里是颜色类型 */
+  inherits: false; /* 设置该属性是否继承。false 表示不继承 */
+  initial-value: #f7df1f; /* 定义初始值 */
+}
+@property --radial-color-2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #41b883;
+}
+@keyframes fade-in-bg {
+  0% {
+    --radial-color-1: #f7df1f;
+    --radial-color-2: #41b883;
+  }
+  25% {
+    --radial-color-1: #5baa45;
+    --radial-color-2: #3078c6;
+  }
+  50% {
+    --radial-color-1: #e0234e;
+    --radial-color-2: #419eff;
+  }
+  75% {
+    --radial-color-1: #cccccc;
+    --radial-color-2: #ab63fe;
+  }
+  100% {
+    --radial-color-1: #f7df1f;
+    --radial-color-2: #41b883;
+  }
+}
+
+#VPContent {
+}
+
 .app-icon {
   width: 1em;
   height: 1em;
@@ -86,35 +122,12 @@ a:focus {
   overflow: hidden;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .VPLocalNavOutlineDropdown .items {
   border: none;
 }
 .VPLocalNavOutlineDropdown .outline {
   outline-style: none;
 }
-
-// header.VPNav {
-//   position: sticky !important;
-//   top: 0;
-// }
-// .VPLocalNav {
-//   position: sticky !important;
-//   top: 64px !important;
-// }
-
-// .VPContent {
-//   background-color: var(--vp-c-bg) !important;
-// }
 
 pre,
 code,

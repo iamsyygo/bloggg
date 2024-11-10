@@ -24,10 +24,10 @@ import {
   withCtx,
   withKeys,
   withScopeId
-} from "./chunk-JJNTIHXZ.js";
-import "./chunk-G3PMV62Z.js";
+} from "./chunk-LPBJEE5X.js";
+import "./chunk-PZ5AY32C.js";
 
-// node_modules/.pnpm/@floating-ui+utils@0.2.5/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
+// node_modules/.pnpm/@floating-ui+utils@0.2.8/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
 var sides = ["top", "right", "bottom", "left"];
 var alignments = ["start", "end"];
 var placements = sides.reduce((acc, side) => acc.concat(side, side + "-" + alignments[0], side + "-" + alignments[1]), []);
@@ -154,7 +154,7 @@ function rectToClientRect(rect) {
   };
 }
 
-// node_modules/.pnpm/@floating-ui+core@1.6.5/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
+// node_modules/.pnpm/@floating-ui+core@1.6.8/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function computeCoordsFromPlacement(_ref, placement, rtl) {
   let {
     reference,
@@ -633,10 +633,9 @@ async function convertValueToCoords(state, options) {
     crossAxis: 0,
     alignmentAxis: null
   } : {
-    mainAxis: 0,
-    crossAxis: 0,
-    alignmentAxis: null,
-    ...rawValue
+    mainAxis: rawValue.mainAxis || 0,
+    crossAxis: rawValue.crossAxis || 0,
+    alignmentAxis: rawValue.alignmentAxis
   };
   if (alignment && typeof alignmentAxis === "number") {
     crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
@@ -741,7 +740,11 @@ var shift = function(options) {
         ...limitedCoords,
         data: {
           x: limitedCoords.x - x2,
-          y: limitedCoords.y - y2
+          y: limitedCoords.y - y2,
+          enabled: {
+            [mainAxis]: checkMainAxis,
+            [crossAxis]: checkCrossAxis
+          }
         }
       };
     }
@@ -755,6 +758,7 @@ var size = function(options) {
     name: "size",
     options,
     async fn(state) {
+      var _state$middlewareData, _state$middlewareData2;
       const {
         placement,
         rects,
@@ -790,10 +794,11 @@ var size = function(options) {
       const noShift = !state.middlewareData.shift;
       let availableHeight = overflowAvailableHeight;
       let availableWidth = overflowAvailableWidth;
-      if (isYAxis) {
-        availableWidth = alignment || noShift ? min(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
-      } else {
-        availableHeight = alignment || noShift ? min(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
+      if ((_state$middlewareData = state.middlewareData.shift) != null && _state$middlewareData.enabled.x) {
+        availableWidth = maximumClippingWidth;
+      }
+      if ((_state$middlewareData2 = state.middlewareData.shift) != null && _state$middlewareData2.enabled.y) {
+        availableHeight = maximumClippingHeight;
       }
       if (noShift && !alignment) {
         const xMin = max(overflow.left, 0);
@@ -1319,7 +1324,7 @@ var computePosition2 = (reference, floating, options) => {
   });
 };
 
-// node_modules/.pnpm/floating-vue@5.2.2_vue@3.4.34_typescript@5.5.4_/node_modules/floating-vue/dist/floating-vue.mjs
+// node_modules/.pnpm/floating-vue@5.2.2_vue@3.5.12_typescript@5.6.3_/node_modules/floating-vue/dist/floating-vue.mjs
 function ye(e, t) {
   for (const o in t)
     Object.prototype.hasOwnProperty.call(t, o) && (typeof t[o] == "object" && e[o] ? ye(e[o], t[o]) : e[o] = t[o]);
@@ -2897,7 +2902,7 @@ var Gt = {
   options: h2
 };
 
-// node_modules/.pnpm/@shikijs+vitepress-twoslash@1.12.0_typescript@5.5.4/node_modules/@shikijs/vitepress-twoslash/dist/client.mjs
+// node_modules/.pnpm/@shikijs+vitepress-twoslash@1.22.2_typescript@5.6.3/node_modules/@shikijs/vitepress-twoslash/dist/client.mjs
 var isMobile = typeof navigator !== "undefined" && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 var TwoslashFloatingVue = {
   install: (app, options = {}) => {

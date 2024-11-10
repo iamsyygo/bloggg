@@ -19,7 +19,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     `circle(${Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))}px at ${x}px ${y}px)`,
   ];
 
-  // @ts-expect-error
   await document.startViewTransition(async () => {
     isDark.value = !isDark.value;
     await nextTick();
