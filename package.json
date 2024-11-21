@@ -22,6 +22,7 @@
     "@shikijs/vitepress-twoslash": "^1.12.0",
     "@types/node": "^20.14.12",
     "@unocss/preset-icons": "^0.61.6",
+    "chokidar": "^4.0.1",
     "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
     "remark": "^15.0.1",

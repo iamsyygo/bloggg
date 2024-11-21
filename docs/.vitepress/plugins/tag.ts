@@ -39,7 +39,6 @@ export const tagMapping = {
   gulp: 'gulp',
   grunt: 'grunt',
   parcel: 'parcel',
-  typescript: 'typescript',
   jest: 'jest',
   cypress: 'cypress',
 };

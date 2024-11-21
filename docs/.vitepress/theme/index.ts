@@ -18,12 +18,6 @@ import '../utils/echarts';
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    // if (!import.meta.env.SSR) {
-    //   import('aos').then(({ default: aos }) => {
-    //     aos.init();
-    //   });
-    // }
-
     return h(DefaultThemeLayout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     });

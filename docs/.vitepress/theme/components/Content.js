@@ -1,4 +1,4 @@
-import { defineComponent, h, nextTick, onBeforeUnmount, onMounted, Transition, watch } from 'vue';
+import { defineComponent, h, nextTick, onActivated, onBeforeUnmount, onMounted, Transition, watch } from 'vue';
 import { useData, useRoute } from 'vitepress';
 import { contentUpdatedCallbacks } from 'vitepress/dist/client/app/utils.js';
 
@@ -54,7 +54,7 @@ export const Content = defineComponent({
     });
 
     watch(
-      route,
+      () => route.path,
       () => {
         counter = 0;
         observer.disconnect();

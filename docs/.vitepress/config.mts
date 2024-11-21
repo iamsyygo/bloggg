@@ -3,6 +3,12 @@ import unocss from 'unocss/vite';
 import { withMagicMove } from 'vitepress-plugin-magic-move';
 import { fileURLToPath, URL } from 'node:url';
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash';
+import { blogMetaPlugin } from './plugins/blogMetaPlugin';
+import path from 'path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const blogDir = path.resolve(__dirname, '../blog');
+
 // https://vitepress.dev/reference/site-config
 
 const config = defineConfig({
@@ -25,7 +31,6 @@ const config = defineConfig({
       light: 'vitesse-light',
       dark: 'vitesse-dark',
     },
-    // @ts-expect-error
     codeTransformers: [transformerTwoslash()],
   },
   themeConfig: {
@@ -60,7 +65,7 @@ const config = defineConfig({
     // },
   },
   vite: {
-    plugins: [unocss()],
+    plugins: [unocss(), blogMetaPlugin(blogDir)],
     server: {
       port: 3080,
       host: true,

@@ -4,7 +4,7 @@ lastUpdated: false
 ---
 
 <script setup>
-import BlogList from './BlogList.vue'
+import BlogList from '@theme/components/BlogList.vue'
 </script>
 
 # Docs
