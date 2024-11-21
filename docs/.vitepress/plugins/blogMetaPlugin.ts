@@ -3,8 +3,6 @@ import { readFileSync, readdirSync, statSync, mkdirSync, writeFileSync } from 'n
 import { join, resolve, parse, dirname } from 'node:path';
 // @ts-expect-error
 import matter from 'gray-matter';
-// 用于监听文件变化
-import chokidar from 'chokidar';
 import { tagMapping } from './tag';
 
 interface BlogMeta {
@@ -15,6 +13,7 @@ interface BlogMeta {
   readingTime: number;
   tags: string[];
   wordCount: number;
+  frontmatter: Record<string, any>;
 }
 
 // 计算阅读时间的函数（假设平均阅读速度为每分钟 100 个字）
@@ -58,6 +57,8 @@ function generateBlogMeta(blogDir: string): BlogMeta[] {
       const firstH1 = markdownContent.match(/<h1>(.*?)<\/h1>/)?.[1] || markdownContent.match(/# (.*)/)?.[1];
       const tags = normalizeTags(frontmatter.tags || []);
 
+      console.log(frontmatter);
+
       blogMeta.push({
         name: firstH1 || parse(file).name,
         path: `/blog/${file.replace(/\.md$/, '')}`,
@@ -66,6 +67,7 @@ function generateBlogMeta(blogDir: string): BlogMeta[] {
         readingTime,
         tags,
         wordCount: markdownContent.split(/\s+/).length,
+        frontmatter: frontmatter,
       });
     }
   }
@@ -83,14 +85,8 @@ export function blogMetaPlugin(blogDir: string): Plugin {
     name: 'vite-plugin-blog-meta',
 
     configureServer(server) {
-      const watcher = chokidar.watch(join(blogDir, '*.md'), {
-        ignored: [
-          /(^|[\/\\])\../, // 忽略隐藏文件
-          '**/index.md', // 忽略 index.md
-          '**/*/**.md', // 忽略子目录中的 md 文件
-        ],
-        persistent: true,
-      });
+      // 使用 vite 的 watcher API
+      const watcher = server.watcher;
 
       function handleChange() {
         cachedBlogMeta = generateBlogMeta(blogDir);
@@ -106,18 +102,26 @@ export function blogMetaPlugin(blogDir: string): Plugin {
         }
       }
 
-      watcher
-        .on('add', handleChange)
-        .on('unlink', handleChange)
-        .on('unlinkDir', handleChange)
-        .on('addDir', handleChange)
-        .on('ready', () => {
-          console.log('Blog meta plugin: Initial scan complete.');
-        });
+      // 监听 md 文件变化
+      watcher.on('add', (path) => {
+        if (path.endsWith('.md') && !path.includes('index.md')) {
+          handleChange();
+        }
+      });
 
-      return () => {
-        watcher.close();
-      };
+      watcher.on('unlink', (path) => {
+        if (path.endsWith('.md') && !path.includes('index.md')) {
+          handleChange();
+        }
+      });
+
+      watcher.on('change', (path) => {
+        if (path.endsWith('.md') && !path.includes('index.md')) {
+          handleChange();
+        }
+      });
+
+      console.log('Blog meta plugin: Initial scan complete.');
     },
 
     resolveId(id) {
@@ -131,29 +135,10 @@ export function blogMetaPlugin(blogDir: string): Plugin {
         return `export const blogMeta = ${JSON.stringify(cachedBlogMeta, null, 2)};`;
       }
     },
-    buildStart() {
-      cachedBlogMeta = generateBlogMeta(blogDir);
-      // 将博客元数据写入到 dist 目录下
-      const outputPath = resolve(process.cwd(), '.vitepress/dist/blog-meta.json');
-      // 创建目录
-      mkdirSync(dirname(outputPath), { recursive: true });
-      // 写入文件
-      writeFileSync(outputPath, JSON.stringify(cachedBlogMeta));
-    },
+    buildStart() {},
 
     transform(code, id) {
       if (id === resolvedVirtualModuleId) {
-        if (process.env.NODE_ENV === 'production') {
-          // 在生产环境下，将博客元数据从 dist 目录下导入
-          return {
-            code: `
-              import blogMetaJson from '/blog-meta.json';
-              export const blogMeta = blogMetaJson;
-            `,
-            map: null,
-          };
-        }
-
         return {
           code: `export const blogMeta = ${JSON.stringify(cachedBlogMeta, null, 2)};`,
           map: null,

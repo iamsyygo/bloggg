@@ -1,5 +1,9 @@
 ---
 aside: true
+transmitted: true
+transmittedFrom: 'https://antfu.me/posts/watch-with-reactivity'
+transmittedAuthor: 'Anthony Fu'
+translated: true
 ---
 
 # 使用 @vue/reactivity 的 Watch

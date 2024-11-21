@@ -6,6 +6,8 @@ declare module 'virtual:blog-meta' {
     updateTime: number;
     readingTime: number;
     tags: string[];
+    wordCount: number;
+    frontmatter: Record<string, any>;
   }
 
   export const blogMeta: BlogMeta[];

@@ -1,5 +1,9 @@
 ---
 aside: true
+transmitted: true
+transmittedFrom: 'https://antfu.me/posts/async-with-composition-api'
+transmittedAuthor: 'Anthony Fu'
+translated: true
 ---
 
 # Vue Composition API 中的异步函数

@@ -1,7 +1,14 @@
 <template>
   <div class="blog-list">
     <div v-for="blog in blogMeta" :key="blog.path" class="blog-item">
-      <h2>{{ blog.name }}</h2>
+      <div>
+        <h2>{{ blog.name }}</h2>
+        <template v-if="blog.frontmatter?.translated">
+          <div>
+            翻译自 <a :href="blog.frontmatter.transmittedFrom">{{ blog.frontmatter.transmittedAuthor }}</a>
+          </div>
+        </template>
+      </div>
       <div class="blog-meta">
         <p>创建时间: {{ new Date(blog.createTime).toLocaleDateString() }}</p>
         <p>字数: {{ blog.wordCount }}</p>
