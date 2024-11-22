@@ -4,7 +4,7 @@ import { withMagicMove } from 'vitepress-plugin-magic-move';
 import { fileURLToPath, URL } from 'node:url';
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash';
 import { blogMetaPlugin } from './plugins/blogMetaPlugin';
-import path from 'path';
+import * as path from 'path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const blogDir = path.resolve(__dirname, '../blog');
@@ -14,18 +14,7 @@ const blogDir = path.resolve(__dirname, '../blog');
 const config = defineConfig({
   title: 'Web Design...',
   description: '...',
-  head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
-    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
-    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    [
-      'link',
-      {
-        href: 'https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap',
-        rel: 'stylesheet',
-      },
-    ],
-  ],
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   markdown: {
     theme: {
       light: 'vitesse-light',
@@ -37,8 +26,9 @@ const config = defineConfig({
     logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '🏠', link: '/' },
-      { text: '📖', link: '/blog' },
+      { text: '<div class="i-fluent-emoji:house text-20px v-middle"></div>', link: '/' },
+      { text: '<div class="i-fluent-emoji:green-book text-20px v-middle"></div>', link: '/blog' },
+      { text: '<div class="i-fluent-emoji:abacus text-20px v-middle"></div>', link: '/planning' },
     ],
     docFooter: {
       prev: 'cd ..',
@@ -53,7 +43,7 @@ const config = defineConfig({
     //   },
     // ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/iamsyygo' }],
-    returnToTopLabel: '飞回顶部～',
+    returnToTopLabel: '🚀 Take Me to the Top!!!',
     // lastUpdated: {
     //   text: '最后更新',
     // },
@@ -101,5 +91,4 @@ const config = defineConfig({
   },
 });
 
-// @ts-expect-error
 export default withMagicMove(config);

@@ -1,5 +1,8 @@
-import { defineConfig, presetUno, presetAttributify } from 'unocss'
-import presetIcons from '@unocss/preset-icons'
+import { defineConfig, presetUno, presetAttributify } from 'unocss';
+import presetIcons from '@unocss/preset-icons';
+
+// unocss animation https://animate.zyob.top/
+
 export default defineConfig({
   // ...unocss options
   presets: [
@@ -7,6 +10,13 @@ export default defineConfig({
       // ...preset options
     }),
     presetAttributify({}),
-    presetIcons(),
+    presetIcons({
+      extraProperties: {
+        display: 'inline-block',
+        width: '1em',
+        height: '1em',
+        'vertical-align': '-0.15em',
+      },
+    }),
   ],
-})
+});

@@ -1,6 +1,7 @@
 import { defineComponent, h, nextTick, onBeforeUnmount, onMounted, Transition, watch } from 'vue';
 import { useData, useRoute } from 'vitepress';
 import { contentUpdatedCallbacks } from 'vitepress/dist/client/app/utils.js';
+import { inView } from 'motion';
 
 const runCbs = () => contentUpdatedCallbacks.forEach((fn) => fn());
 
@@ -13,65 +14,45 @@ export const Content = defineComponent({
     const route = useRoute();
     const { site } = useData();
 
-    let observer;
+    let cleanup;
     let counter = 0;
-    onMounted(() => {
-      initObserver();
-    });
 
-    function initObserver() {
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (
-              entry.isIntersecting &&
-              (entry.target.dataset.animate === '' || entry.target.dataset.animate === true) &&
-              entry.target.getBoundingClientRect().top > 0
-            ) {
-              // 增加计数器值
-              counter += 1;
-              // @ts-expect-error
-              entry.target.style.setProperty('--stagger', counter);
-              // @ts-expect-error
-              entry.target.style.setProperty('--delay', counter * 10 + 'ms');
-              // @ts-expect-error
-              entry.target.style.animationPlayState = 'running'; // 启动动画
-            }
-          });
-        },
-        {
-          threshold: 0.1, // 当元素进入视图10%时触发
-        }
-      );
-
-      document.querySelectorAll('[data-animate]').forEach((el) => {
-        observer.observe(el);
+    function initMotion() {
+      cleanup?.();
+      cleanup = inView('[data-animate]', (info) => {
+        counter += 1;
+        // 如果有 data-normal 就不需要延迟
+        const isNormal = info.target.dataset.normal;
+        info.target.style.setProperty('--stagger', isNormal ? 1 : counter);
+        info.target.style.setProperty('--delay', '10ms');
+        info.target.style.setProperty('--start', info.target.dataset.start ?? '0ms');
+        info.target.style.animationPlayState = 'running';
       });
     }
 
-    onBeforeUnmount(() => {
-      if (observer) observer.disconnect();
+    onMounted(() => {
+      initMotion();
     });
 
-    watch(
-      () => route.path,
-      () => {
-        counter = 0;
-        observer.disconnect();
-        nextTick(() => {
-          initObserver();
-        });
-      },
-      {
-        flush: 'post',
-      }
-    );
+    onBeforeUnmount(() => {
+      if (cleanup) cleanup();
+    });
 
     return () =>
       h(props.as, site.value.contentProps ?? { style: { position: 'relative' } }, [
         h(
           Transition,
-          { name: 'fade', mode: 'out-in' },
+          {
+            name: 'fade',
+            mode: 'out-in',
+            onBeforeLeave() {
+              cleanup();
+              counter = 0;
+            },
+            onAfterEnter() {
+              initMotion();
+            },
+          },
           {
             default: () =>
               route.component

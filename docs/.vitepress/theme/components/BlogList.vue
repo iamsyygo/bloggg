@@ -1,8 +1,8 @@
 <template>
   <div class="blog-list">
-    <div v-for="blog in blogMeta" :key="blog.path" class="blog-item">
+    <div v-for="blog in blogMeta" :key="blog.path" class="blog-item" data-animate data-normal @click="open(blog.path)">
       <div>
-        <h2>{{ blog.name }}</h2>
+        <div class="blog-title">{{ blog.name }}</div>
         <template v-if="blog.frontmatter?.translated">
           <div>
             翻译自 <a :href="blog.frontmatter.transmittedFrom">{{ blog.frontmatter.transmittedAuthor }}</a>
@@ -14,38 +14,48 @@
         <p>字数: {{ blog.wordCount }}</p>
         <p>预计阅读时间: {{ blog.readingTime }} 分钟</p>
       </div>
-      <div class="blog-tags" v-if="blog.tags.length">
-        <span v-for="tag in blog.tags" :key="tag" class="tag">{{ tag }}</span>
-      </div>
-      <a :href="blog.path">阅读更多</a>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { blogMeta } from 'virtual:blog-meta';
+import { blogMeta as _blogMeta } from 'virtual:blog-meta';
+import { useRouter } from 'vitepress';
+import { computed } from 'vue';
+
+const blogMeta = computed(() => _blogMeta.filter((blog) => blog.frontmatter?.currentState !== 0));
+
+const router = useRouter();
+
+const open = (path: string) => {
+  router.go(path);
+};
 </script>
 
 <style scoped>
+.blog-list {
+  margin-top: 3.8rem;
+  padding: 0 16px;
+}
 .blog-meta {
   display: flex;
   gap: 1rem;
-  color: #666;
+  color: var(--vp-c-text-2);
   font-size: 0.9em;
 }
 
-.blog-tags {
-  margin: 0.5rem 0;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+.blog-item .blog-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 18px 0 16px;
+  color: var(--vp-c-text-1);
+  transition: color 0.3s ease-in-out;
+  &:hover {
+    color: var(--vp-c-indigo-1);
+  }
 }
-
-.tag {
-  padding: 0.2rem 0.5rem;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  font-size: 0.8em;
-  color: #666;
+.blog-item + .blog-item {
+  border-top: 1px dashed var(--vp-c-text-3);
 }
 </style>

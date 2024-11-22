@@ -1,3 +1,8 @@
+---
+completedAt: 2024-11-21 # 期待完成时间
+currentState: 2 # 当前状态 0: 未开始 1: 进行中 2: 已完成
+---
+
 # tsconfig.json 学习
 
 ::: tip
@@ -30,24 +35,24 @@ tsc
 
 [tsconfig.json](https://www.typescriptlang.org/tsconfig) 是一个 json 文件，采用 json5 的格式，所以可以使用注释。`tsconfig.json` 的配置分为两部分，一部分是编译选项，一部分是非编译选项。
 
-- a. 编译选项控制着编译的行为，比如输出目录、模块规范、是否生成 sourceMap 等。
-- b. 非编译选项控制的是 ts 编译器要编译的项目（文件）信息。
+-   a. 编译选项控制着编译的行为，比如输出目录、模块规范、是否生成 sourceMap 等。
+-   b. 非编译选项控制的是 ts 编译器要编译的项目（文件）信息。
 
 ### 非编译选项
 
-- `files`：指定要编译的文件列表(不支持 glob 匹配语法)。如果指定了 `files`，则只会编译指定的文件，不会编译其他文件。
+-   `files`：指定要编译的文件列表(不支持 glob 匹配语法)。如果指定了 `files`，则只会编译指定的文件，不会编译其他文件。
 
 :::magic-move
 
 ```json [正确]
 {
-  "files": ["src/index.ts"]
+    "files": ["src/index.ts"]
 }
 ```
 
 ```json [错误]
 {
-  "files": ["src/**/*"] // error TS6053: 找不到文件“xxx/src/*.ts
+    "files": ["src/**/*"] // error TS6053: 找不到文件“xxx/src/*.ts
 }
 ```
 
@@ -63,11 +68,11 @@ tsc
 └── tsconfig.json
 ```
 
-- `include`：指定要编译的文件列表，**支持 glob 匹配语法**。如果指定了 `include`，则只会编译指定的文件，不会编译其他文件。
+-   `include`：指定要编译的文件列表，**支持 glob 匹配语法**。如果指定了 `include`，则只会编译指定的文件，不会编译其他文件。
 
 ```json
 {
-  "include": ["main.ts", "src/**/*"]
+    "include": ["main.ts", "src/**/*"]
 }
 ```
 
@@ -84,8 +89,8 @@ tsc
 ```json
 // files 和 include 同时存在时会怎么样？
 {
-  "files": ["main.ts"],
-  "include": ["src/**/*"]
+    "files": ["main.ts"],
+    "include": ["src/**/*"]
 }
 ```
 
@@ -102,11 +107,11 @@ tsc
 
 ---
 
-- `exclude`：指定不编译的文件列表，**支持 glob 匹配语法**。如果指定了 `exclude`，则会编译除了指定的文件之外的所有文件。
+-   `exclude`：指定不编译的文件列表，**支持 glob 匹配语法**。如果指定了 `exclude`，则会编译除了指定的文件之外的所有文件。
 
 ```json
 {
-  "exclude": ["main.ts"]
+    "exclude": ["main.ts"]
 }
 ```
 
@@ -114,8 +119,8 @@ tsc
 
 ```json
 {
-  "files": ["main.ts"],
-  "exclude": ["main.ts"]
+    "files": ["main.ts"],
+    "exclude": ["main.ts"]
 }
 ```
 
@@ -136,26 +141,26 @@ exclude 仅影响 include 设置的结果。也就是说，**它只改变 includ
 
 被 exclude 排除的文件仍然可能通过其他方式成为代码库的一部分，例如：
 
-- 代码中的 import 语句
-- 类型包含（types inclusion），types 中包含的
-- /// <reference 指令
-- 在 files 列表中指定
-  :::
+-   代码中的 import 语句
+-   类型包含（types inclusion），types 中包含的
+-   /// <reference 指令
+-   在 files 列表中指定
+    :::
 
 ---
 
-- `extends`：继承另一个配置文件。`extends` 的值是一个字符串，指向要继承的另一个配置文件的路径。该路径可以使用 node 的模块解析规则，所以可以使用相对路径、绝对路径、`node_modules` 中的模块名等。
+-   `extends`：继承另一个配置文件。`extends` 的值是一个字符串，指向要继承的另一个配置文件的路径。该路径可以使用 node 的模块解析规则，所以可以使用相对路径、绝对路径、`node_modules` 中的模块名等。
 
 ```json
 {
-  "extends": "./tsconfig.base.json"
+    "extends": "./tsconfig.base.json"
 }
 ```
 
 配置继承
 
-- a. 基础配置文件：首先加载基础配置文件中的配置(被继承配置的文件`tsconfig.base.json`)。
-- b. 继承配置文件：然后加载继承配置文件中的配置，**并覆盖基础配置文件中的相同配置项**(要继承配置的文件`tsconfig.json`)。
+-   a. 基础配置文件：首先加载基础配置文件中的配置(被继承配置的文件`tsconfig.base.json`)。
+-   b. 继承配置文件：然后加载继承配置文件中的配置，**并覆盖基础配置文件中的相同配置项**(要继承配置的文件`tsconfig.json`)。
 
 :::warning Important
 配置文件中的所有相对路径都是相对于配置文件的路径的。
@@ -164,21 +169,21 @@ exclude 仅影响 include 设置的结果。也就是说，**它只改变 includ
 ```json
 // tsconfig.base.json
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "outDir": "./foo/dist"
-  }
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "./foo/dist"
+    }
 }
 ```
 
 ```json
 // tsconfig.json
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "./dist"
+    }
 }
 ```
 
@@ -198,7 +203,7 @@ exclude 仅影响 include 设置的结果。也就是说，**它只改变 includ
 
 ---
 
-- references：指定项目之间的依赖关系。`references` 是一个数组，每个元素都是一个对象，包含 `path` 和 `prepend` 两个属性。通过 `references` 可以将大型项目拆分成多个子项目，拆分成更小的部分，从而提高构建和编辑器交互的速度，强制组件之间的逻辑分离，并以新的和改进的方式组织代码。
+-   references：指定项目之间的依赖关系。`references` 是一个数组，每个元素都是一个对象，包含 `path` 和 `prepend` 两个属性。通过 `references` 可以将大型项目拆分成多个子项目，拆分成更小的部分，从而提高构建和编辑器交互的速度，强制组件之间的逻辑分离，并以新的和改进的方式组织代码。
 
 ```shell
 .
@@ -217,21 +222,21 @@ exclude 仅影响 include 设置的结果。也就是说，**它只改变 includ
 
 ```json [app]
 {
-  "references": [{ "path": "../lib" }]
+    "references": [{ "path": "../lib" }]
 }
 ```
 
 ```json [lib]
 {
-  "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "compilerOptions": {
+        "outDir": "./dist"
+    }
 }
 ```
 
 ```json [tsconfig.json]
 {
-  "references": [{ "path": "./lib" }, { "path": "./app" }]
+    "references": [{ "path": "./lib" }, { "path": "./app" }]
 }
 ```
 
@@ -257,45 +262,45 @@ tsc -b app
 
 1、`allowUnreachableCode`：允许无法访问的代码。默认为 `null`，提供建议作为对编辑的警告。
 
-- `true`：允许无法访问的代码。
-- `false`：不允许无法访问的代码，显示蓝色波浪线警告。
-- `null`：默认值，提供建议作为对编辑的警告。
+-   `true`：允许无法访问的代码。
+-   `false`：不允许无法访问的代码，显示蓝色波浪线警告。
+-   `null`：默认值，提供建议作为对编辑的警告。
 
 :::magic-move
 
 ```ts [true]
 // 无任何警告提示，tsc 编译通过
 function test(n: number) {
-  if (n > 0) {
+    if (n > 0) {
+        return n;
+    } else {
+        return n;
+    }
     return n;
-  } else {
-    return n;
-  }
-  return n;
 }
 ```
 
 ```ts [false]
 // error TS7021: Unreachable code detected. 检测到无法访问的代码
 function test(n: number) {
-  if (n > 0) {
-    return n;
-  } else {
-    return n;
-  }
-  return n; // 此处有蓝色波浪线提示
+    if (n > 0) {
+        return n;
+    } else {
+        return n;
+    }
+    return n; // 此处有蓝色波浪线提示
 }
 ```
 
 ```ts [null]
 // 编译通过
 function test(n: number) {
-  if (n > 0) {
-    return n;
-  } else {
-    return n;
-  }
-  return n; // 此处代码被置灰，无提示
+    if (n > 0) {
+        return n;
+    } else {
+        return n;
+    }
+    return n; // 此处代码被置灰，无提示
 }
 ```
 
@@ -305,8 +310,8 @@ function test(n: number) {
 
 ```ts
 function typeErrorExample(): number {
-  // 这里返回了一个字符串，编译器会报错
-  return "This does not affect errors on the basis of code which appears to be unreachable due to type analysis.";
+    // 这里返回了一个字符串，编译器会报错
+    return 'This does not affect errors on the basis of code which appears to be unreachable due to type analysis.';
 }
 ```
 
@@ -318,19 +323,19 @@ typeErrorExample 函数中，返回类型与声明不符，这是类型分析错
 
 2、`allowUnusedLabels`：允许未使用的标签。默认为 `null`。
 
-- `true`：允许未使用的标签。
-- `false`：不允许未使用的标签，显示蓝色波浪线警告。
-- `null`：默认值，提供建议作为对编辑的警告。
+-   `true`：允许未使用的标签。
+-   `false`：不允许未使用的标签，显示蓝色波浪线警告。
+-   `null`：默认值，提供建议作为对编辑的警告。
 
 回顾下标签语法：标签是用来标记代码块的，可以与 break 或 continue 语句一起使用。loop1 和 loop2 就是标签。
 
 ```ts
 loop1: for (let i = 0; i < 5; i++) {
-  loop2: for (let j = 0; j < 5; j++) {
-    if (i === 2 && j === 2) {
-      break loop1; // 跳出 loop1 循环
+    loop2: for (let j = 0; j < 5; j++) {
+        if (i === 2 && j === 2) {
+            break loop1; // 跳出 loop1 循环
+        }
     }
-  }
 }
 ```
 
@@ -339,28 +344,28 @@ loop1: for (let i = 0; i < 5; i++) {
 ```ts [true]
 // 无任何警告提示，tsc 编译通过
 function test() {
-  label: for (let i = 0; i < 10; i++) {
-    console.log(i);
-  }
+    label: for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
 }
 ```
 
 ```ts [false]
 // error TS7028: Unused label. 未使用的标签
 function test() {
-  label: for (let i = 0; i < 10; i++) {
-    console.log(i);
-  }
+    label: for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
 }
 ```
 
 ```ts [null]
 // 编译通过
 function test() {
-  // label 被置灰
-  label: for (let i = 0; i < 10; i++) {
-    console.log(i);
-  }
+    // label 被置灰
+    label: for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
 }
 ```
 
@@ -374,10 +379,10 @@ function test() {
 
 严格模式的好处：
 
-- 捕获错误：严格模式下，更多的错误会被检测出来并抛出异常。
-- 防止意外的全局变量：严格模式下，不能意外地创建全局变量。
-- 消除 this 的隐式绑定：严格模式下，this 不会被隐式绑定到全局对象。
-- 禁止重复参数：严格模式下，函数参数不能有重复的名称。
+-   捕获错误：严格模式下，更多的错误会被检测出来并抛出异常。
+-   防止意外的全局变量：严格模式下，不能意外地创建全局变量。
+-   消除 this 的隐式绑定：严格模式下，this 不会被隐式绑定到全局对象。
+-   禁止重复参数：严格模式下，函数参数不能有重复的名称。
 
 ---
 
@@ -385,11 +390,11 @@ function test() {
 
 ```ts
 interface ITest {
-  name?: "foo" | "bar";
+    name?: 'foo' | 'bar';
 }
 
 export const test: ITest = {
-  name: undefined,
+    name: undefined,
 };
 ```
 
@@ -397,15 +402,15 @@ export const test: ITest = {
 
 ```ts
 const test: ITest = {
-  name: undefined,
+    name: undefined,
 };
 
 if (test.name) {
-  // 不会进入这里
+    // 不会进入这里
 }
 
-if ("name" in test) {
-  // 会进入这里
+if ('name' in test) {
+    // 会进入这里
 }
 ```
 
@@ -413,11 +418,11 @@ so，这并不是完全准确的，设置 `exactOptionalPropertyTypes` 为 `true
 
 ```ts
 interface ITest {
-  name?: "foo" | "bar";
+    name?: 'foo' | 'bar';
 }
 
 export const test: ITest = {
-  name: undefined, // error TS2322: 不能将类型“undefined”分配给类型“"bar" | "foo"
+    name: undefined, // error TS2322: 不能将类型“undefined”分配给类型“"bar" | "foo"
 };
 ```
 
@@ -431,12 +436,12 @@ Fallthrough 是指在 switch 语句中，没有 break 语句，导致执行下�
 const foo = 1;
 
 switch (foo) {
-  case 1:
-    console.log(1);
-  case 2:
-    console.log(2);
-  default:
-    console.log("default");
+    case 1:
+        console.log(1);
+    case 2:
+        console.log(2);
+    default:
+        console.log('default');
 }
 
 // 输出
@@ -454,7 +459,7 @@ switch (foo) {
 ```ts
 // error TS7006: 参数“a”隐式具有“any”类型
 function test(a) {
-  return a;
+    return a;
 }
 ```
 
@@ -466,28 +471,28 @@ function test(a) {
 
 ```ts [false]
 class A {
-  testA() {}
+    testA() {}
 }
 
 class B extends A {
-  // 不会报错，不需要使用 override 关键字
-  testA() {}
+    // 不会报错，不需要使用 override 关键字
+    testA() {}
 }
 ```
 
 ```ts [true]
 class A {
-  testA() {}
+    testA() {}
 }
 
 class B extends A {
-  // error TS4114: 此成员必须有 "override" 修饰符，因为它替代基类 "A" 中的一个成员
-  testA() {}
+    // error TS4114: 此成员必须有 "override" 修饰符，因为它替代基类 "A" 中的一个成员
+    testA() {}
 }
 
 class C extends A {
-  // 正确
-  override testB() {}
+    // 正确
+    override testB() {}
 }
 ```
 
@@ -500,10 +505,10 @@ class C extends A {
 ```ts
 const a = 1;
 function test(): string {
-  if (a === 1) {
-    return "Hello World";
-  }
-  // a !== 1 时，没有返回值
+    if (a === 1) {
+        return 'Hello World';
+    }
+    // a !== 1 时，没有返回值
 }
 // error TS2366: 函数缺少结束 return 语句，返回类型不包括 "undefined"
 ```
@@ -518,7 +523,7 @@ Emit 分类包含与代码生成（即编译输出）相关的选项。这些选
 
 ```json
 {
-  "outDir": "./dist"
+    "outDir": "./dist"
 }
 ```
 
@@ -556,8 +561,8 @@ Emit 分类包含与代码生成（即编译输出）相关的选项。这些选
 
 ```json
 {
-  "rootDir": "./src",
-  "outDir": "./dist"
+    "rootDir": "./src",
+    "outDir": "./dist"
 }
 ```
 
@@ -590,7 +595,7 @@ Emit 分类包含与代码生成（即编译输出）相关的选项。这些选
 
 ```json
 {
-  "outFile": "./dist/bundle.js"
+    "outFile": "./dist/bundle.js"
 }
 ```
 
@@ -610,24 +615,24 @@ Emit 分类包含与代码生成（即编译输出）相关的选项。这些选
 
 类型定义文件 (.d.ts)：
 
-- .d.ts 文件包含类型声明，用于描述模块的外部接口。
-- 它们**不包含实际的实现代码，只包含类型信息。**
+-   .d.ts 文件包含类型声明，用于描述模块的外部接口。
+-   它们**不包含实际的实现代码，只包含类型信息。**
 
 外部 API 描述：
 
-- .d.ts 文件描述了模块的外部 API，包括函数、类、变量、接口等的类型信息。
-- 这使得其他开发者可以了解模块的使用方式，而**无需查看实现细节。**
+-   .d.ts 文件描述了模块的外部 API，包括函数、类、变量、接口等的类型信息。
+-   这使得其他开发者可以了解模块的使用方式，而**无需查看实现细节。**
 
 智能提示和类型检查：
 
-- 有了 .d.ts 文件，TypeScript 可以为未类型化的代码提供智能提示（IntelliSense）和类型检查。
-- 这有助于在开发过程中捕获错误，并提高代码的可维护性和可读性。
+-   有了 .d.ts 文件，TypeScript 可以为未类型化的代码提供智能提示（IntelliSense）和类型检查。
+-   这有助于在开发过程中捕获错误，并提高代码的可维护性和可读性。
 
 :::tip
 当 TypeScript 编译器遇到一个模块时，它会查找与该模块对应的 .d.ts 文件。如果找到了，它会使用 .d.ts 文件中的类型信息来提供智能提示和类型检查。
 
 ```ts
-import { xxx } from "lodash";
+import { xxx } from 'lodash';
 
 xxx();
 ```
@@ -641,8 +646,8 @@ xxx();
 
 ```json
 {
-  "declaration": true,
-  "declarationDir": "./dist/types"
+    "declaration": true,
+    "declarationDir": "./dist/types"
 }
 ```
 
@@ -654,13 +659,13 @@ xxx();
 
 10、`lib`：ts 提供了一些 ts 类型声明文件，如 `Promise`、`Object.freeze`、`Object` 等环境的 API 类型声明文件。这些文件可以提供很好的智能提示和类型检查。通常存放在 lib 文件夹下，我们称之为标准库。通过设置 lib 字段，手动选择导入哪些库。
 
-- 通过设置 lib 字段，你可以手动选择要包含哪些标准库文件。这在某些情况下非常有用，例如你只需要特定的库，而不需要全部库。
-  提高编译性能：
+-   通过设置 lib 字段，你可以手动选择要包含哪些标准库文件。这在某些情况下非常有用，例如你只需要特定的库，而不需要全部库。
+    提高编译性能：
 
-- 通过只引入必要的库，可以减少编译时间和内存占用，提高编译性能。
-  避免冲突：
+-   通过只引入必要的库，可以减少编译时间和内存占用，提高编译性能。
+    避免冲突：
 
-- 在某些情况下，你可能会使用自定义的类型声明文件，通过设置 lib 字段，可以避免与标准库的冲突。
+-   在某些情况下，你可能会使用自定义的类型声明文件，通过设置 lib 字段，可以避免与标准库的冲突。
 
 :::warning Important
 如果你不设置 lib 字段，TypeScript 会根据 target 选项自动引入相应的标准库。例如，如果 target 设置为 es5，TypeScript 会自动引入 es5 的标准库。因此，在大多数情况下，你可能不需要手动设置 lib 字段，除非你有特定的需求。
@@ -673,7 +678,7 @@ xxx();
 
 ```json
 {
-  "typeRoots": ["./node_modules/@types", "./typings"]
+    "typeRoots": ["./node_modules/@types", "./typings"]
 }
 ```
 
@@ -692,27 +697,27 @@ xxx();
 
 ```json
 {
-  "compilerOptions": {
-    "types": ["node", "lodash"]
-  }
+    "compilerOptions": {
+        "types": ["node", "lodash"]
+    }
 }
 ```
 
 在这个配置中，只有 `node` 和 `lodash` 的类型声明包会被包含在全局作用域中，其他所有的 `@types` 包都会被忽略。
 
-- 默认值：如果未指定，TypeScript 会包含所有在 node_modules/@types 目录中的类型声明包。
-- 使用场景：当你希望 TypeScript 只包含特定的类型声明包时，可以使用 types。
+-   默认值：如果未指定，TypeScript 会包含所有在 node_modules/@types 目录中的类型声明包。
+-   使用场景：当你希望 TypeScript 只包含特定的类型声明包时，可以使用 types。
 
 :::tip 区别
 
-- typeRoots：用于指定类型声明文件的根目录。TypeScript 会从这些目录中加载所有类型声明文件。
-- types：用于指定要包含的类型声明包。TypeScript 只会包含这些包中的类型声明。
+-   typeRoots：用于指定类型声明文件的根目录。TypeScript 会从这些目录中加载所有类型声明文件。
+-   types：用于指定要包含的类型声明包。TypeScript 只会包含这些包中的类型声明。
 
 ```json
 {
-  "compilerOptions": {
-    "types": ["node", "jest", "express"]
-  }
+    "compilerOptions": {
+        "types": ["node", "jest", "express"]
+    }
 }
 ```
 
@@ -723,9 +728,9 @@ xxx();
 
 ```json
 {
-  "compilerOptions": {
-    "types": ["node", "jest", "express"]
-  }
+    "compilerOptions": {
+        "types": ["node", "jest", "express"]
+    }
 }
 ```
 
@@ -734,8 +739,8 @@ xxx();
 代码示例
 
 ```ts
-import * as moment from "moment";
-moment().format("MMMM Do YYYY, h:mm:ss a");
+import * as moment from 'moment';
+moment().format('MMMM Do YYYY, h:mm:ss a');
 ```
 
 即使 moment 不在 types 数组中，你仍然可以导入并使用它：
@@ -750,8 +755,8 @@ moment().format("MMMM Do YYYY, h:mm:ss a");
 
 14、`esModuleInterop`：启用对 ES 模块语义的互操作性支持。它允许 TypeScript 更好地与 CommonJS 模块进行互操作，特别是在处理默认导入和命名空间导入时。
 
-- 默认导入：启用 esModuleInterop 后，你可以使用默认导入语法来导入 CommonJS 模块，而不需要使用命名空间导入。
-- 命名空间导入：启用 esModuleInterop 后，TypeScript 会自动为 CommonJS 模块生成命名空间导入。
+-   默认导入：启用 esModuleInterop 后，你可以使用默认导入语法来导入 CommonJS 模块，而不需要使用命名空间导入。
+-   命名空间导入：启用 esModuleInterop 后，TypeScript 会自动为 CommonJS 模块生成命名空间导入。
 
 假设你有一个 CommonJS 模块 lodash，并且你希望在 TypeScript 中导入它。
 
@@ -759,11 +764,11 @@ moment().format("MMMM Do YYYY, h:mm:ss a");
 
 ```ts [启用]
 // 使用默认导入语法来导入 CommonJS 模块，而不需要使用命名空间导入。
-import _ from "lodash";
+import _ from 'lodash';
 ```
 
 ```ts [禁用]
-import * as _ from "lodash";
+import * as _ from 'lodash';
 ```
 
 :::

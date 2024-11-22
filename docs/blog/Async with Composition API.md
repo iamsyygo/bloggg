@@ -4,6 +4,8 @@ transmitted: true
 transmittedFrom: 'https://antfu.me/posts/async-with-composition-api'
 transmittedAuthor: 'Anthony Fu'
 translated: true
+completedAt: 2024-11-21 # 期待完成时间
+currentState: 2 # 当前状态 0: 未开始 1: 进行中 2: 已完成
 ---
 
 # Vue Composition API 中的异步函数

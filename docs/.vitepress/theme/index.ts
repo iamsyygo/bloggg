@@ -25,6 +25,7 @@ export default {
   enhanceApp(ctx) {
     const { app, router, siteData } = ctx;
     vitepressNprogress(ctx);
+
     app.component('Content', Content);
     app.use(TwoslashFloatingVue);
   },

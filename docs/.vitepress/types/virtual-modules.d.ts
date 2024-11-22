@@ -5,7 +5,6 @@ declare module 'virtual:blog-meta' {
     createTime: number;
     updateTime: number;
     readingTime: number;
-    tags: string[];
     wordCount: number;
     frontmatter: Record<string, any>;
   }

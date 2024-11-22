@@ -9,6 +9,7 @@
   --vp-c--body-text-1: #555;
   --vp-c--title-text-weight: 800;
   --vp-c-text-highlight-weight: 600;
+  --vp-code-copy-copied-text-content: '已复制';
 }
 .dark {
   --vp-c-text-1: #fff;
@@ -107,4 +108,29 @@ samp {
   text-decoration-style: dashed;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.4em;
+}
+
+.vp-doc strong {
+  position: relative;
+  color: inherit;
+  font-weight: normal;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: none;
+  text-decoration-color: var(--vp-c-text-1);
+  text-decoration-style: dashed;
+  text-underline-offset: 0.32em;
+}
+
+.VPLink.link.VPNavBarMenuLink {
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.active {
+    opacity: 1;
+  }
 }

@@ -1,9 +1,8 @@
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { join, parse } from 'node:path';
 import type { Plugin } from 'vitepress';
-import { readFileSync, readdirSync, statSync, mkdirSync, writeFileSync } from 'node:fs';
-import { join, resolve, parse, dirname } from 'node:path';
 // @ts-expect-error
 import matter from 'gray-matter';
-import { tagMapping } from './tag';
 
 interface BlogMeta {
   name: string;
@@ -11,27 +10,16 @@ interface BlogMeta {
   createTime: number;
   updateTime: number;
   readingTime: number;
-  tags: string[];
   wordCount: number;
   frontmatter: Record<string, any>;
 }
 
-// 计算阅读时间的函数（假设平均阅读速度为每分钟 100 个字）
+// 假设平均阅读速度为每分钟 150 个字
 function calculateReadingTime(content: string): number {
-  const wordsPerMinute = 100;
+  const wordsPerMinute = 150;
   const words = content.trim().split(/\s+/).length;
   const readingTime = Math.ceil(words / wordsPerMinute);
   return Math.max(1, readingTime);
-}
-
-// 处理标签，将原始标签映射为标准化的标签
-function normalizeTags(rawTags: string[]): string[] {
-  if (!Array.isArray(rawTags)) return [];
-
-  return rawTags
-    .map((tag) => tag.toLowerCase().trim())
-    .map((tag) => tagMapping[tag] || tag) // 使用映射表中的标准标签名，如果没有则使用原标签
-    .filter((tag, index, self) => self.indexOf(tag) === index);
 }
 
 // 生成博客元数据
@@ -47,7 +35,7 @@ function generateBlogMeta(blogDir: string): BlogMeta[] {
       stat.isFile() &&
       /\.md$/.test(file) &&
       file !== 'index.md' &&
-      !file.includes('/') && // 确保是一级目录
+      !file.includes('/') && // 确保只处理一级目录
       !file.includes('\\') // 兼容 Windows 路径
     ) {
       const content = readFileSync(filePath, 'utf-8');
@@ -55,9 +43,6 @@ function generateBlogMeta(blogDir: string): BlogMeta[] {
       const readingTime = calculateReadingTime(markdownContent);
 
       const firstH1 = markdownContent.match(/<h1>(.*?)<\/h1>/)?.[1] || markdownContent.match(/# (.*)/)?.[1];
-      const tags = normalizeTags(frontmatter.tags || []);
-
-      console.log(frontmatter);
 
       blogMeta.push({
         name: firstH1 || parse(file).name,
@@ -65,7 +50,6 @@ function generateBlogMeta(blogDir: string): BlogMeta[] {
         createTime: stat.birthtimeMs,
         updateTime: stat.mtimeMs,
         readingTime,
-        tags,
         wordCount: markdownContent.split(/\s+/).length,
         frontmatter: frontmatter,
       });

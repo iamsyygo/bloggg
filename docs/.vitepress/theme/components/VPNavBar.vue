@@ -6,7 +6,7 @@ import { useSidebar } from 'vitepress/dist/client/theme-default/composables/side
 import VPNavBarAppearance from 'vitepress/dist/client/theme-default/components/VPNavBarAppearance.vue';
 import VPNavBarExtra from 'vitepress/dist/client/theme-default/components/VPNavBarExtra.vue';
 import VPNavBarHamburger from 'vitepress/dist/client/theme-default/components/VPNavBarHamburger.vue';
-import VPNavBarMenu from 'vitepress/dist/client/theme-default/components/VPNavBarMenu.vue';
+import VPNavBarMenu from './VPNavBarMenu.vue';
 import VPNavBarSearch from 'vitepress/dist/client/theme-default/components/VPNavBarSearch.vue';
 import VPNavBarSocialLinks from 'vitepress/dist/client/theme-default/components/VPNavBarSocialLinks.vue';
 import VPNavBarTitle from 'vitepress/dist/client/theme-default/components/VPNavBarTitle.vue';

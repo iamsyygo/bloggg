@@ -1,28 +1,24 @@
 <script lang="ts" setup>
-import { inject, ref, watchPostEffect } from 'vue'
-import { useData } from 'vitepress/dist/client/theme-default/composables/data.js'
-const { isDark, theme } = useData()
+import { inject, ref, watchPostEffect } from 'vue';
+import { useData } from 'vitepress/dist/client/theme-default/composables/data.js';
+const { isDark, theme } = useData();
 
 const toggleAppearance = inject('toggle-appearance', () => {
-  isDark.value = !isDark.value
-})
+  isDark.value = !isDark.value;
+});
 
-const switchTitle = ref('')
+const switchTitle = ref('');
 
 watchPostEffect(() => {
   switchTitle.value = isDark.value
-    ? theme.value.lightModeSwitchTitle || 'Switch to light theme'
-    : theme.value.darkModeSwitchTitle || 'Switch to dark theme'
-})
+    ? theme.value.lightModeSwitchTitle || '切换到亮色模式'
+    : theme.value.darkModeSwitchTitle || '切换到暗色模式';
+});
 </script>
 
 <template>
-  <div
-    class="i-meteocons:clear-day-fill w-1.8em h-1.8em cursor-pointer"
-    v-if="!isDark"
-    @click="toggleAppearance"></div>
-  <div
-    class="i-meteocons:clear-night-fill w-1.8em h-1.8em cursor-pointer"
-    v-else
-    @click="toggleAppearance"></div>
+  <transition name="fade" mode="out-in">
+    <div class="i-fluent-emoji:sun text-xl cursor-pointer" v-if="!isDark" @click="toggleAppearance"></div>
+    <div class="i-fluent-emoji:first-quarter-moon-face text-xl cursor-pointer" v-else @click="toggleAppearance"></div>
+  </transition>
 </template>

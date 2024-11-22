@@ -30,11 +30,11 @@ import {
   sliderMove,
   stopPreviousKeyframeAnimationAndRestore,
   updateLeaveTo
-} from "./chunk-Y2XEUPKS.js";
+} from "./chunk-R3E3U26J.js";
 import {
   AxisModelCommonMixin,
   Axis_default,
-  Component_default as Component_default2,
+  Component_default,
   Interval_default,
   Ordinal_default,
   SeriesData_default,
@@ -62,10 +62,10 @@ import {
   symbolBuildProxies,
   unionAxisExtentFromData,
   use
-} from "./chunk-B7GLMN7G.js";
+} from "./chunk-TVIIABRV.js";
 import {
   Circle_default,
-  Component_default,
+  Component_default as Component_default2,
   DataDiffer_default,
   DataFormatMixin,
   LOCATION_PARAMS,
@@ -160,12 +160,12 @@ import {
   updateProps,
   warn,
   windowOpen
-} from "./chunk-LZMJZLHM.js";
+} from "./chunk-6EJOOEVG.js";
 import {
   addEventListener,
   normalizeEvent,
   stop
-} from "./chunk-PA2DFQHE.js";
+} from "./chunk-536HR6KF.js";
 import {
   BoundingRect_default,
   Displayable_default,
@@ -178,7 +178,7 @@ import {
   assert,
   bind,
   clone,
-  create2 as create,
+  create,
   createHashMap,
   curry,
   defaults,
@@ -215,8 +215,8 @@ import {
   transformLocalCoord,
   translate,
   trim
-} from "./chunk-E5LXUOJZ.js";
-import "./chunk-PZ5AY32C.js";
+} from "./chunk-YL3HQK3J.js";
+import "./chunk-HKJ2B2AA.js";
 
 // node_modules/.pnpm/echarts@5.5.1/node_modules/echarts/lib/component/axisPointer/BaseAxisPointer.js
 var inner = makeInner();
@@ -802,7 +802,7 @@ var AxisPointerModel = (
       }
     };
     return AxisPointerModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var AxisPointerModel_default = AxisPointerModel;
 
@@ -919,7 +919,7 @@ var AxisPointerView = (
     };
     AxisPointerView2.type = "axisPointer";
     return AxisPointerView2;
-  }(Component_default2)
+  }(Component_default)
 );
 var AxisPointerView_default = AxisPointerView;
 
@@ -1418,7 +1418,7 @@ var PolarModel = (
       radius: "80%"
     };
     return PolarModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var PolarModel_default = PolarModel;
 
@@ -1435,7 +1435,7 @@ var PolarAxisModel = (
     };
     PolarAxisModel2.type = "polarAxis";
     return PolarAxisModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 mixin(PolarAxisModel, AxisModelCommonMixin);
 var AngleAxisModel = (
@@ -2400,7 +2400,7 @@ var PolarView = (
     }
     PolarView2.type = "polar";
     return PolarView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function install7(registers) {
   use(install5);
@@ -2618,7 +2618,7 @@ var SingleAxisModel = (
       }
     };
     return SingleAxisModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 mixin(SingleAxisModel, AxisModelCommonMixin.prototype);
 var AxisModel_default = SingleAxisModel;
@@ -2918,7 +2918,7 @@ var SingleView = (
     }
     SingleView2.type = "single";
     return SingleView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function install8(registers) {
   use(install5);
@@ -3010,7 +3010,7 @@ var CalendarModel = (
       }
     };
     return CalendarModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 function mergeAndNormalizeLayoutParams(target, raw) {
   var cellSize = target.cellSize;
@@ -3355,7 +3355,7 @@ var CalendarView = (
     };
     CalendarView2.type = "calendar";
     return CalendarView2;
-  }(Component_default2)
+  }(Component_default)
 );
 var CalendarView_default = CalendarView;
 
@@ -3785,7 +3785,7 @@ var GraphicComponentModel = (
       // parentId: null
     };
     return GraphicComponentModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 
 // node_modules/.pnpm/echarts@5.5.1/node_modules/echarts/lib/component/graphic/GraphicView.js
@@ -4002,7 +4002,7 @@ var GraphicComponentView = (
     };
     GraphicComponentView2.type = "graphic";
     return GraphicComponentView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function newEl(graphicType) {
   if (true) {
@@ -4479,7 +4479,7 @@ var DataZoomModel = (
       end: 100
     };
     return DataZoomModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 function retrieveRawOption(option) {
   var ret = {};
@@ -4523,7 +4523,7 @@ var DataZoomView = (
     };
     DataZoomView2.type = "dataZoom";
     return DataZoomView2;
-  }(Component_default2)
+  }(Component_default)
 );
 var DataZoomView_default = DataZoomView;
 
@@ -4921,7 +4921,7 @@ var ToolboxModel = (
       }
     };
     return ToolboxModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var ToolboxModel_default = ToolboxModel;
 
@@ -5165,7 +5165,7 @@ var ToolboxView = (
     };
     ToolboxView2.type = "toolbox";
     return ToolboxView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function isUserFeatureName(featureName) {
   return featureName.indexOf("my") === 0;
@@ -6429,7 +6429,7 @@ var TooltipModel = (
       }
     };
     return TooltipModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var TooltipModel_default = TooltipModel;
 
@@ -7440,7 +7440,7 @@ var TooltipView = (
     };
     TooltipView2.type = "tooltip";
     return TooltipView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function buildTooltipModel(modelCascade, globalTooltipModel, defaultTooltipOption) {
   var ecModel = globalTooltipModel.ecModel;
@@ -8055,7 +8055,7 @@ var BrushView = (
     };
     BrushView2.type = "brush";
     return BrushView2;
-  }(Component_default2)
+  }(Component_default)
 );
 var BrushView_default = BrushView;
 
@@ -8119,7 +8119,7 @@ var BrushModel = (
       z: 1e4
     };
     return BrushModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 function generateBrushOption(option, brushOption) {
   return merge({
@@ -8297,7 +8297,7 @@ var TitleModel = (
       }
     };
     return TitleModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var TitleView = (
   /** @class */
@@ -8421,7 +8421,7 @@ var TitleView = (
     };
     TitleView2.type = "title";
     return TitleView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function install15(registers) {
   registers.registerComponentModel(TitleModel);
@@ -8541,7 +8541,7 @@ var TimelineModel = (
       data: []
     };
     return TimelineModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var TimelineModel_default = TimelineModel;
 
@@ -8670,7 +8670,7 @@ var TimelineView = (
     }
     TimelineView2.type = "timeline";
     return TimelineView2;
-  }(Component_default2)
+  }(Component_default)
 );
 var TimelineView_default = TimelineView;
 
@@ -9485,7 +9485,7 @@ var MarkerModel = (
     MarkerModel2.type = "marker";
     MarkerModel2.dependencies = ["series", "grid", "polar", "geo"];
     return MarkerModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 mixin(MarkerModel, DataFormatMixin.prototype);
 var MarkerModel_default = MarkerModel;
@@ -9695,7 +9695,7 @@ var MarkerView = (
     };
     MarkerView2.type = "marker";
     return MarkerView2;
-  }(Component_default2)
+  }(Component_default)
 );
 var MarkerView_default = MarkerView;
 
@@ -10750,7 +10750,7 @@ var LegendModel = (
       }
     };
     return LegendModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var LegendModel_default = LegendModel;
 
@@ -11062,7 +11062,7 @@ var LegendView = (
     };
     LegendView2.type = "legend.plain";
     return LegendView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function getLegendStyle(iconType, legendItemModel, lineVisualStyle, itemVisualStyle, drawType, isSelected, api) {
   function handleCommonProps(style, visualStyle) {
@@ -13040,7 +13040,7 @@ var VisualMapModel = (
       }
     };
     return VisualMapModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var VisualMapModel_default = VisualMapModel;
 
@@ -13304,7 +13304,7 @@ var VisualMapView = (
     };
     VisualMapView2.type = "visualMap";
     return VisualMapView2;
-  }(Component_default2)
+  }(Component_default)
 );
 var VisualMapView_default = VisualMapView;
 
@@ -15173,7 +15173,7 @@ var DatasetModel = (
       seriesLayoutBy: SERIES_LAYOUT_BY_COLUMN
     };
     return DatasetModel2;
-  }(Component_default)
+  }(Component_default2)
 );
 var DatasetView = (
   /** @class */
@@ -15186,7 +15186,7 @@ var DatasetView = (
     }
     DatasetView2.type = "dataset";
     return DatasetView2;
-  }(Component_default2)
+  }(Component_default)
 );
 function install31(registers) {
   registers.registerComponentModel(DatasetModel);

@@ -1,13 +1,13 @@
 import {
   createSeriesData_default,
   prepareSeriesDataSchema
-} from "./chunk-7WAE46ZZ.js";
+} from "./chunk-RIKNKYVF.js";
 import {
   getLabelLineStatesModels,
   limitSurfaceAngle,
   limitTurnAngle,
   setLabelLineStyle
-} from "./chunk-K7UVINZC.js";
+} from "./chunk-QSDA3MMY.js";
 import {
   LineDraw_default,
   Line_default as Line_default2,
@@ -37,7 +37,7 @@ import {
   updateViewOnPan,
   updateViewOnZoom,
   warnDeprecated
-} from "./chunk-Y2XEUPKS.js";
+} from "./chunk-R3E3U26J.js";
 import {
   Chart_default,
   CoordinateSystem_default,
@@ -56,7 +56,7 @@ import {
   normalizeSymbolSize,
   throttle,
   use
-} from "./chunk-B7GLMN7G.js";
+} from "./chunk-TVIIABRV.js";
 import {
   BezierCurve_default,
   Circle_default,
@@ -139,8 +139,8 @@ import {
   updateProps,
   warn,
   windowOpen
-} from "./chunk-LZMJZLHM.js";
-import "./chunk-PA2DFQHE.js";
+} from "./chunk-6EJOOEVG.js";
+import "./chunk-536HR6KF.js";
 import {
   BoundingRect_default,
   Displayable_default,
@@ -161,7 +161,7 @@ import {
   concatArray,
   containStroke,
   containStroke2,
-  copy,
+  copy2 as copy,
   create,
   create2,
   createHashMap,
@@ -212,8 +212,8 @@ import {
   set,
   sub,
   translate
-} from "./chunk-E5LXUOJZ.js";
-import "./chunk-PZ5AY32C.js";
+} from "./chunk-YL3HQK3J.js";
+import "./chunk-HKJ2B2AA.js";
 
 // node_modules/.pnpm/echarts@5.5.1/node_modules/echarts/lib/chart/line/LineSeries.js
 var LineSeriesModel = (
@@ -7594,9 +7594,9 @@ var TreemapView = (
         var layoutInfo = this.seriesModel.layoutInfo;
         mouseX -= layoutInfo.x;
         mouseY -= layoutInfo.y;
-        var m = create2();
+        var m = create();
         translate(m, m, [-mouseX, -mouseY]);
-        scale2(m, m, [zoomScale, zoomScale]);
+        scale(m, m, [zoomScale, zoomScale]);
         translate(m, m, [mouseX, mouseY]);
         rect.applyTransform(m);
         this.api.dispatchAction({
@@ -8731,8 +8731,8 @@ function simpleLayout(seriesModel) {
 function simpleLayoutEdge(graph, seriesModel) {
   graph.eachEdge(function(edge, index) {
     var curveness = retrieve3(edge.getModel().get(["lineStyle", "curveness"]), -getCurvenessForEdge(edge, seriesModel, index, true), 0);
-    var p1 = clone2(edge.node1.getLayout());
-    var p2 = clone2(edge.node2.getLayout());
+    var p1 = clone3(edge.node1.getLayout());
+    var p2 = clone3(edge.node2.getLayout());
     var points = [p1, p2];
     if (+curveness) {
       points.push([(p1[0] + p2[0]) / 2 - (p1[1] - p2[1]) * curveness, (p1[1] + p2[1]) / 2 - (p2[0] - p1[0]) * curveness]);
@@ -8821,7 +8821,7 @@ function circularLayout(seriesModel, basedOn, draggingNode, pointer) {
     var _a = coordSys.pointToData(pointer), tempX = _a[0], tempY = _a[1];
     var v = [tempX - cx, tempY - cy];
     normalize(v, v);
-    scale(v, v, r);
+    scale2(v, v, r);
     draggingNode.setLayout([cx + v[0], cy + v[1]], true);
     var circularRotateLabel = seriesModel.get(["circular", "rotateLabel"]);
     rotateNodeLabel(draggingNode, circularRotateLabel, cx, cy);
@@ -8829,8 +8829,8 @@ function circularLayout(seriesModel, basedOn, draggingNode, pointer) {
   _layoutNodesBasedOn[basedOn](seriesModel, graph, nodeData, r, cx, cy, count);
   graph.eachEdge(function(edge, index) {
     var curveness = retrieve3(edge.getModel().get(["lineStyle", "curveness"]), getCurvenessForEdge(edge, seriesModel, index), 0);
-    var p1 = clone2(edge.node1.getLayout());
-    var p2 = clone2(edge.node2.getLayout());
+    var p1 = clone3(edge.node1.getLayout());
+    var p2 = clone3(edge.node2.getLayout());
     var cp1;
     var x12 = (p1[0] + p2[0]) / 2;
     var y12 = (p1[1] + p2[1]) / 2;
@@ -8935,9 +8935,9 @@ function forceLayout(inNodes, inEdges, opts) {
   for (var i = 0; i < nodes.length; i++) {
     var n = nodes[i];
     if (!n.p) {
-      n.p = create(width * (Math.random() - 0.5) + center2[0], height * (Math.random() - 0.5) + center2[1]);
+      n.p = create2(width * (Math.random() - 0.5) + center2[0], height * (Math.random() - 0.5) + center2[1]);
     }
-    n.pp = clone2(n.p);
+    n.pp = clone3(n.p);
     n.edges = null;
   }
   var initialFriction = opts.friction == null ? 0.6 : opts.friction;
@@ -9255,9 +9255,9 @@ function adjustEdge(graph, scale3) {
     var fromSymbol = edge.getVisual("fromSymbol");
     var toSymbol = edge.getVisual("toSymbol");
     if (!linePoints.__original) {
-      linePoints.__original = [clone2(linePoints[0]), clone2(linePoints[1])];
+      linePoints.__original = [clone3(linePoints[0]), clone3(linePoints[1])];
       if (linePoints[2]) {
-        linePoints.__original.push(clone2(linePoints[2]));
+        linePoints.__original.push(clone3(linePoints[2]));
       }
     }
     var originalPoints = linePoints.__original;
@@ -13804,7 +13804,7 @@ var EffectScatterView = (
     EffectScatterView2.prototype._updateGroupTransform = function(seriesModel) {
       var coordSys = seriesModel.coordinateSystem;
       if (coordSys && coordSys.getRoamTransform) {
-        this.group.transform = clone3(coordSys.getRoamTransform());
+        this.group.transform = clone2(coordSys.getRoamTransform());
         this.group.decomposeTransform();
       }
     };

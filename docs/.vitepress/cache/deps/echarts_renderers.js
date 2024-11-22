@@ -7,7 +7,7 @@ import {
   getLineDash,
   getSize,
   requestAnimationFrame_default
-} from "./chunk-PA2DFQHE.js";
+} from "./chunk-536HR6KF.js";
 import {
   BoundingRect_default,
   CompoundPath_default,
@@ -69,8 +69,8 @@ import {
   platformApi,
   retrieve2,
   round4
-} from "./chunk-E5LXUOJZ.js";
-import "./chunk-PZ5AY32C.js";
+} from "./chunk-YL3HQK3J.js";
+import "./chunk-HKJ2B2AA.js";
 
 // node_modules/.pnpm/zrender@5.6.0/node_modules/zrender/lib/svg/SVGPathRebuilder.js
 var mathSin = Math.sin;

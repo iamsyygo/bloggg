@@ -1,3 +1,8 @@
+---
+completedAt: 2024-11-21 # 期待完成时间
+currentState: 2 # 当前状态 0: 未开始 1: 进行中 2: 已完成
+---
+
 # 用 pnpm 管理 monorepo
 
 在现代前端开发中，monorepo（单一代码库）是一种常见的项目管理方式，它允许多个项目共享一个代码库。pnpm 特别适合管理 monorepo 项目。本文将详细介绍如何使用 pnpm 管理 monorepo 项目。

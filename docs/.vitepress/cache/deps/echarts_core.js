@@ -1,16 +1,16 @@
 import {
-  installLabelLayout
-} from "./chunk-F6RGK2X2.js";
-import {
   createDimensions,
   createSeriesData_default
-} from "./chunk-7WAE46ZZ.js";
-import "./chunk-K7UVINZC.js";
+} from "./chunk-RIKNKYVF.js";
+import {
+  installLabelLayout
+} from "./chunk-UA6JFTD7.js";
+import "./chunk-QSDA3MMY.js";
 import {
   AxisModelCommonMixin,
   Axis_default,
   Chart_default,
-  Component_default as Component_default2,
+  Component_default,
   PRIORITY,
   SeriesData_default,
   connect,
@@ -48,12 +48,12 @@ import {
   throttle,
   use,
   version
-} from "./chunk-B7GLMN7G.js";
+} from "./chunk-TVIIABRV.js";
 import {
   Arc_default,
   BezierCurve_default,
   Circle_default,
-  Component_default,
+  Component_default as Component_default2,
   Ellipse_default,
   IncrementalDisplayable_default,
   Line_default,
@@ -111,11 +111,11 @@ import {
   round,
   toCamelCase,
   updateProps
-} from "./chunk-LZMJZLHM.js";
+} from "./chunk-6EJOOEVG.js";
 import {
   brushSingle,
   zrender_exports
-} from "./chunk-PA2DFQHE.js";
+} from "./chunk-536HR6KF.js";
 import {
   BoundingRect_default,
   CompoundPath_default,
@@ -148,10 +148,10 @@ import {
   truncateText,
   util_exports,
   vector_exports
-} from "./chunk-E5LXUOJZ.js";
+} from "./chunk-YL3HQK3J.js";
 import {
   __export
-} from "./chunk-PZ5AY32C.js";
+} from "./chunk-HKJ2B2AA.js";
 
 // node_modules/.pnpm/echarts@5.5.1/node_modules/echarts/lib/export/api/helper.js
 var helper_exports = {};
@@ -298,13 +298,13 @@ __export(util_exports2, {
 
 // node_modules/.pnpm/echarts@5.5.1/node_modules/echarts/lib/export/api.js
 function extendComponentModel(proto) {
-  var Model = Component_default.extend(proto);
-  Component_default.registerClass(Model);
+  var Model = Component_default2.extend(proto);
+  Component_default2.registerClass(Model);
   return Model;
 }
 function extendComponentView(proto) {
-  var View = Component_default2.extend(proto);
-  Component_default2.registerClass(View);
+  var View = Component_default.extend(proto);
+  Component_default.registerClass(View);
   return View;
 }
 function extendSeriesModel(proto) {
@@ -323,8 +323,8 @@ use(installLabelLayout);
 export {
   Axis_default as Axis,
   Chart_default as ChartView,
-  Component_default as ComponentModel,
-  Component_default2 as ComponentView,
+  Component_default2 as ComponentModel,
+  Component_default as ComponentView,
   SeriesData_default as List,
   Model_default as Model,
   PRIORITY,
