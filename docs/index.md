@@ -28,6 +28,6 @@ layout: home
 <p data-animate data-start="360ms" style="font-size: 0.8em; color: #666; margin-top: 2em;">2022-03-01 - PRESENT © iamsyygo</p>
 
 <!-- 隐藏图标 -->
-<div class="i-fluent-emoji:house hidden text-20px v-middle"></div>
+<div class="i-fluent-emoji:growing-heart hidden text-20px v-middle"></div>
 <div class="i-fluent-emoji:green-book hidden text-20px v-middle"></div>
 <div class="i-fluent-emoji:abacus hidden text-20px v-middle"></div>

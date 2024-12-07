@@ -37,25 +37,34 @@ const open = (path: string) => {
   margin-top: 3.8rem;
   padding: 0 16px;
 }
-.blog-meta {
-  display: flex;
-  gap: 1rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.9em;
-}
 
-.blog-item .blog-title {
-  font-size: 1.2em;
-  font-weight: 600;
+.blog-item {
   cursor: pointer;
-  margin: 18px 0 16px;
-  color: var(--vp-c-text-1);
   transition: color 0.3s ease-in-out;
-  &:hover {
+
+  .blog-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 18px 0 16px;
+    color: var(--vp-c-text-1);
+    transition: color 0.3s ease-in-out;
+  }
+
+  .blog-meta {
+    display: flex;
+    gap: 1rem;
+    color: var(--vp-c-text-2);
+    font-size: 0.9em;
+    transition: color 0.3s ease-in-out;
+  }
+
+  & + .blog-item {
+    border-top: 1px dashed var(--vp-c-text-3);
+  }
+
+  &:hover .blog-title,
+  &:hover .blog-meta {
     color: var(--vp-c-indigo-1);
   }
-}
-.blog-item + .blog-item {
-  border-top: 1px dashed var(--vp-c-text-3);
 }
 </style>

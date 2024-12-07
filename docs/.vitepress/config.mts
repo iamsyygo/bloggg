@@ -26,7 +26,7 @@ const config = defineConfig({
     logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '<div class="i-fluent-emoji:house text-20px v-middle"></div>', link: '/' },
+      { text: '<div class="i-fluent-emoji:growing-heart text-20px v-middle"></div>', link: '/' },
       { text: '<div class="i-fluent-emoji:green-book text-20px v-middle"></div>', link: '/blog' },
       { text: '<div class="i-fluent-emoji:abacus text-20px v-middle"></div>', link: '/planning' },
     ],

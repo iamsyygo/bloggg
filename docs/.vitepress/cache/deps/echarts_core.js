@@ -1,16 +1,15 @@
 import {
+  installLabelLayout
+} from "./chunk-3NQJP7NK.js";
+import {
   createDimensions,
   createSeriesData_default
-} from "./chunk-RIKNKYVF.js";
-import {
-  installLabelLayout
-} from "./chunk-UA6JFTD7.js";
-import "./chunk-QSDA3MMY.js";
+} from "./chunk-YHSCCNCB.js";
 import {
   AxisModelCommonMixin,
   Axis_default,
   Chart_default,
-  Component_default,
+  Component_default as Component_default2,
   PRIORITY,
   SeriesData_default,
   connect,
@@ -48,12 +47,13 @@ import {
   throttle,
   use,
   version
-} from "./chunk-TVIIABRV.js";
+} from "./chunk-Z3WB32US.js";
+import "./chunk-3NKZR66L.js";
 import {
   Arc_default,
   BezierCurve_default,
   Circle_default,
-  Component_default as Component_default2,
+  Component_default,
   Ellipse_default,
   IncrementalDisplayable_default,
   Line_default,
@@ -111,11 +111,11 @@ import {
   round,
   toCamelCase,
   updateProps
-} from "./chunk-6EJOOEVG.js";
+} from "./chunk-BFUWJ3HR.js";
 import {
   brushSingle,
   zrender_exports
-} from "./chunk-536HR6KF.js";
+} from "./chunk-ROFTJ6IZ.js";
 import {
   BoundingRect_default,
   CompoundPath_default,
@@ -148,7 +148,7 @@ import {
   truncateText,
   util_exports,
   vector_exports
-} from "./chunk-YL3HQK3J.js";
+} from "./chunk-CXBGLY7W.js";
 import {
   __export
 } from "./chunk-HKJ2B2AA.js";
@@ -298,13 +298,13 @@ __export(util_exports2, {
 
 // node_modules/.pnpm/echarts@5.5.1/node_modules/echarts/lib/export/api.js
 function extendComponentModel(proto) {
-  var Model = Component_default2.extend(proto);
-  Component_default2.registerClass(Model);
+  var Model = Component_default.extend(proto);
+  Component_default.registerClass(Model);
   return Model;
 }
 function extendComponentView(proto) {
-  var View = Component_default.extend(proto);
-  Component_default.registerClass(View);
+  var View = Component_default2.extend(proto);
+  Component_default2.registerClass(View);
   return View;
 }
 function extendSeriesModel(proto) {
@@ -323,8 +323,8 @@ use(installLabelLayout);
 export {
   Axis_default as Axis,
   Chart_default as ChartView,
-  Component_default2 as ComponentModel,
-  Component_default as ComponentView,
+  Component_default as ComponentModel,
+  Component_default2 as ComponentView,
   SeriesData_default as List,
   Model_default as Model,
   PRIORITY,

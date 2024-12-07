@@ -7,7 +7,7 @@ import {
   getLineDash,
   getSize,
   requestAnimationFrame_default
-} from "./chunk-536HR6KF.js";
+} from "./chunk-ROFTJ6IZ.js";
 import {
   BoundingRect_default,
   CompoundPath_default,
@@ -69,7 +69,7 @@ import {
   platformApi,
   retrieve2,
   round4
-} from "./chunk-YL3HQK3J.js";
+} from "./chunk-CXBGLY7W.js";
 import "./chunk-HKJ2B2AA.js";
 
 // node_modules/.pnpm/zrender@5.6.0/node_modules/zrender/lib/svg/SVGPathRebuilder.js
