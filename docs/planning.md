@@ -24,24 +24,28 @@ const listStateMap = {
 function open(path) {
   window.open(path, '_self')
 }
-const sponsors = ref([
+const icons = [
   {
-    tier: '',
-    items: [
-      {
-        name: 'Vue',
-        url: 'https://vuejs.org/',
-        avatar: 'https://vuejs.org/images/logo.png'
-      },
-      {
-        name: 'Vue',
-        url: 'https://vuejs.org/',
-        avatar: 'https://vuejs.org/images/logo.png'
-      },
-
-    ]
+    name: 'JavaScript',
+    url: 'https://www.javascript.com/',
+    avatar: 'https://www.svgrepo.com/show/349419/javascript.svg'
+  },
+  {
+    name: 'Vue',
+    url: 'https://vuejs.org/',
+    avatar: 'https://www.svgrepo.com/show/354528/vue.svg'
+  },
+  {
+    name: 'TypeScript',
+    url: 'https://www.typescriptlang.org/',
+    avatar: 'https://www.svgrepo.com/show/349540/typescript.svg'
+  },
+  {
+    name: 'React',
+    url: 'https://react.dev/',
+    avatar: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg'
   }
-])
+]
 </script>
 
 ## 文章
@@ -65,4 +69,4 @@ const sponsors = ref([
 
 ## 涉猎
 
-<VPSponsors :data="sponsors" />
+<VPSponsors :data="icons" />

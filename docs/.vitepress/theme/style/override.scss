@@ -5,6 +5,9 @@
   scroll-behavior: smooth;
 
   --vp-font-family-mono: 'DM Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  // --vp-font-family-base: __Inter_aad7c2, __Inter_Fallback_aad7c2, 'DM Sans', 'Inter', 'Helvetica Neue', 'Helvetica',
+  //   'Arial', sans-serif;
+  //   'Liberation Mono', 'Courier New', monospace;
   --vp-c-text-1: #000;
   --vp-c--body-text-1: #555;
   --vp-c--title-text-weight: 800;
@@ -15,7 +18,7 @@
 .dark {
   --vp-c-text-1: #fff;
   --vp-c--body-text-1: #bbb;
-  --vp-c-bg: #000;
+  --vp-c-bg: rgba(0, 0, 0, 1);
 }
 .vp-doc strong {
   font-weight: var(--vp-c-text-highlight-weight, 600);
@@ -24,6 +27,7 @@
 
 body {
   color: var(--vp-c--body-text-1);
+  line-height: 1.5;
 }
 
 #app {
@@ -120,7 +124,7 @@ samp {
   text-decoration-skip-ink: none;
   text-decoration-color: var(--vp-c-text-1);
   text-decoration-style: dashed;
-  text-underline-offset: 0.32em;
+  text-underline-offset: 0.25em;
 }
 
 .VPLink.link.VPNavBarMenuLink {
@@ -133,5 +137,25 @@ samp {
 
   &.active {
     opacity: 1;
+  }
+}
+
+.vp-doc :not(pre) > code {
+  position: relative;
+  background: transparent;
+  font-weight: 600;
+  border-radius: 0;
+  color: var(--vp-c-text-1);
+
+  &::before {
+    content: '`';
+    position: absolute;
+    left: -0.1em;
+  }
+
+  &::after {
+    content: '`';
+    position: absolute;
+    right: -0.1em;
   }
 }
